@@ -16,6 +16,7 @@ public class CountDown : MonoBehaviour
     public GameObject Panel2;
     public GameObject Panel3;
     public GameObject Panel4;
+    public GameObject Panel5;
     public Text timerText;
     public Text timeUpText;
     public Text pleaseEnterText;
@@ -36,7 +37,7 @@ public class CountDown : MonoBehaviour
         Panel2.SetActive(false);
         Panel3.SetActive(false);
         Panel4.SetActive(false);
-
+        Panel5.SetActive(false);
     }
 
     void Update()
@@ -100,6 +101,17 @@ public class CountDown : MonoBehaviour
                 Panel2.SetActive(true);
             }
         }
-        
+
+        //if (BOSS = 0)
+        //{
+            //Time.timeScale = 0f;
+            //Panel1.SetActive(false);
+            //Panel5.SetActive(true);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+            //Panel5.SetActive(false);
+            //Panel2.SetActive(true);
+        //}
     }
 }
