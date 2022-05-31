@@ -172,4 +172,11 @@ public class PlayerMove : MonoBehaviour
 			}
 		}
 	}
+
+	public void TakeDamage(Transform enemyTransform)
+	{
+		state = MyState.Damage;
+		velocity = Vector3.zero;
+		animator.SetTrigger("Damage");
+	}
 }

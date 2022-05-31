@@ -8,7 +8,9 @@ public class EnemyMove : MonoBehaviour
     {
         Walk,
         Wait,
-        Chase
+        Chase,
+        Attack,
+        Freeze
     };
 
     private CharacterController cCon;
@@ -25,6 +27,8 @@ public class EnemyMove : MonoBehaviour
     private float elapsedTime;
     private EnemyState state;
     private Transform playerTransform;
+    [SerializeField]
+    private float freezeTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -59,10 +63,20 @@ public class EnemyMove : MonoBehaviour
                 //Debug.Log(destination);
             }
 
-            if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 0.7f)
+            if (state == EnemyState.Walk)
             {
-                SetState(EnemyState.Wait);
-                animator.SetFloat("Speed", 0.0f);
+                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 0.7f)
+                {
+                    SetState(EnemyState.Wait);
+                    animator.SetFloat("Speed", 0.0f);
+                }
+            }
+            else if(state == EnemyState.Chase)
+            {
+                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 1f)
+                {
+                    SetState(EnemyState.Attack);
+                }
             }
 
         }
@@ -71,6 +85,15 @@ public class EnemyMove : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             if(elapsedTime > waitTime)
+            {
+                SetState(EnemyState.Walk);
+            }
+        }
+        else if(state == EnemyState.Freeze)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime > freezeTime)
             {
                 SetState(EnemyState.Walk);
             }
@@ -85,22 +108,32 @@ public class EnemyMove : MonoBehaviour
         {
             arrived = false;
             elapsedTime = 0f;
-            state = tempState;
             setPosition.CreateRandomPosition();
         }
         else if (tempState == EnemyState.Chase)
         {
-            state = tempState;
             arrived = false;
             playerTransform = targetObj;
         }
         else if (tempState == EnemyState.Wait)
         {
             elapsedTime = 0f;
-            state = tempState;
             arrived = true;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
+        }
+        else if (tempState == EnemyState.Attack)
+        {
+            velocity = Vector3.zero;
+            animator.SetFloat("Speed", 0f);
+            animator.SetBool("Attack", true);
+        }
+        else if (tempState == EnemyState.Freeze)
+        {
+            elapsedTime = 0f;
+            velocity = Vector3.zero;
+            animator.SetFloat("Speed", 0f);
+            animator.SetBool("Attack", false);
         }
     }
 

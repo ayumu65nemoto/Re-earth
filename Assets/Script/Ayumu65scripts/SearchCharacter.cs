@@ -19,7 +19,7 @@ public class SearchCharacter : MonoBehaviour
         {
             EnemyMove.EnemyState state = enemyMove.GetState();
 
-            if (state != EnemyMove.EnemyState.Chase)
+            if (state == EnemyMove.EnemyState.Walk || state == EnemyMove.EnemyState.Walk)
             {
                 Debug.Log("ƒvƒŒƒCƒ„[”­Œ©");
                 enemyMove.SetState(EnemyMove.EnemyState.Chase, col.transform);
