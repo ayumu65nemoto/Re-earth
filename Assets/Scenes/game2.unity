@@ -457,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509869992}
   - component: {fileID: 509869993}
+  - component: {fileID: 509869994}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -480,6 +481,31 @@ Transform:
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &509869993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509869990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a838787cc64d94f97ea3c9cea2ac1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 0
+  maxHp: 0
+  hpBar: {fileID: 1964951941}
+  hpText: {fileID: 310400633}
+  Panel1: {fileID: 2039547750}
+  Panel2: {fileID: 1850622291}
+  Panel3: {fileID: 980449348}
+  Panel4: {fileID: 1418165124}
+  timerText: {fileID: 2019110417}
+  timeUpText: {fileID: 1752886939}
+  pleaseEnterText: {fileID: 1935254660}
+  gameOverText: {fileID: 2136775822}
+  returnText: {fileID: 2022511598}
+--- !u!114 &509869994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

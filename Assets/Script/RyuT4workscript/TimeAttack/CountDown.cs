@@ -12,6 +12,7 @@ public class CountDown : MonoBehaviour
     public int maxHp;      //最大HP
     public Slider hpBar;   //HPバー
     public Text hpText;    //HPの数字
+    public static int score = 300000;  //スコア格納変数（シーン共有可）
     public GameObject Panel1;
     public GameObject Panel2;
     public GameObject Panel3;
@@ -22,6 +23,21 @@ public class CountDown : MonoBehaviour
     public Text pleaseEnterText;
     public Text gameOverText;
     public Text returnText;
+    public Text scoretext;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        score += 10;
+        scoretext.text = string.Format("スコア：{0}", score);
+
+        GetComponent<ParticleSystem>().Play();
+    }
+
+
+    public static int Getscore()
+    {
+        return score;
+    }
 
     void Start()
     {
@@ -93,6 +109,7 @@ public class CountDown : MonoBehaviour
         }
         else if (time < 0)
         {
+            Time.timeScale = 0f;
             timeUpText.text = "TIME UP";
             pleaseEnterText.text = "Please Enter";
         if (Input.GetKeyDown(KeyCode.Return))

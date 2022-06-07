@@ -36,7 +36,6 @@ public class CountDown1_2 : MonoBehaviour
         Panel2.SetActive(false);
         Panel3.SetActive(false);
         Panel4.SetActive(false);
-
     }
 
     void Update()
@@ -46,11 +45,11 @@ public class CountDown1_2 : MonoBehaviour
             Panel4.SetActive(!Panel4.activeSelf);
         }
 
-            if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             Panel3.SetActive(!Panel3.activeSelf);
 
-            if(Panel3.activeSelf)
+            if (Panel3.activeSelf)
             {
                 Time.timeScale = 0f;
             }
@@ -79,7 +78,7 @@ public class CountDown1_2 : MonoBehaviour
             returnText.text = time2.ToString("F0") + "秒後タイトルに戻ります";
 
             // 3秒後に画面遷移（Titleへ移動）
-            if ( time2 <= 0)
+            if (time2 <= 0)
             {
                 SceneManager.LoadScene("Title");
             }
@@ -92,14 +91,26 @@ public class CountDown1_2 : MonoBehaviour
         }
         else if (time < 0)
         {
+            Time.timeScale = 0f;
             timeUpText.text = "TIME UP";
             pleaseEnterText.text = "Please Enter";
-        if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 Panel1.SetActive(false);
                 Panel2.SetActive(true);
             }
         }
-        
+
+        //if (BOSS = 0)
+        //{
+        //Time.timeScale = 0f;
+        //Panel1.SetActive(false);
+        //Panel5.SetActive(true);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //Panel5.SetActive(false);
+        //Panel2.SetActive(true);
+        //}
     }
 }
