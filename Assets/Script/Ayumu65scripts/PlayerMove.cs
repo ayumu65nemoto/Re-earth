@@ -168,7 +168,7 @@ public class PlayerMove : MonoBehaviour
 			{
 				animator.SetTrigger("Attack");
 				SetState(MyState.Attack);
-				Debug.Log(state);
+				//Debug.Log(state);
 			}
 		}
 	}
@@ -178,6 +178,6 @@ public class PlayerMove : MonoBehaviour
 		state = MyState.Damage;
 		velocity = Vector3.zero;
 		animator.SetTrigger("Damage");
-		Debug.Log("Damage");
+		//Debug.Log("Damage");
 	}
 }

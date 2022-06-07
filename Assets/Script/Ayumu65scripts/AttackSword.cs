@@ -8,8 +8,8 @@ public class AttackSword : MonoBehaviour
     {
         if (col.tag == "Enemy")
         {
-            Debug.Log("“G‚É“–‚½‚Á‚½");
-            //col.GetComponent<Enemy>().SetState(Enemy.EnemyState.Damage);
+            //Debug.Log("“G‚É“–‚½‚Á‚½");
+            col.GetComponent<EnemyMove>().SetState(EnemyMove.EnemyState.Damage);
         }
     }
 

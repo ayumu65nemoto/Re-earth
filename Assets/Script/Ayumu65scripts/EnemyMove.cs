@@ -10,7 +10,8 @@ public class EnemyMove : MonoBehaviour
         Wait,
         Chase,
         Attack,
-        Freeze
+        Freeze,
+        Damage
     };
 
     private CharacterController cCon;
@@ -136,6 +137,12 @@ public class EnemyMove : MonoBehaviour
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
             animator.SetBool("Attack", false);
+        }
+        else if (tempState == EnemyState.Damage)
+        {
+            velocity = Vector3.zero;
+            animator.SetBool("Attack", false);
+            animator.SetTrigger("Damage");
         }
     }
 
