@@ -73,7 +73,7 @@ public class EnemyMove : MonoBehaviour
             }
             else if(state == EnemyState.Chase)
             {
-                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 1.3f)
+                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 1.2f)
                 {
                     SetState(EnemyState.Attack);
                 }

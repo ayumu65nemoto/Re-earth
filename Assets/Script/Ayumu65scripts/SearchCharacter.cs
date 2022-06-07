@@ -19,9 +19,9 @@ public class SearchCharacter : MonoBehaviour
         {
             EnemyMove.EnemyState state = enemyMove.GetState();
 
-            if (state == EnemyMove.EnemyState.Walk || state == EnemyMove.EnemyState.Walk)
+            if (state == EnemyMove.EnemyState.Wait || state == EnemyMove.EnemyState.Walk)
             {
-                Debug.Log("プレイヤー発見");
+                //Debug.Log("プレイヤー発見");
                 enemyMove.SetState(EnemyMove.EnemyState.Chase, col.transform);
             }
         }

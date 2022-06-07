@@ -178,5 +178,6 @@ public class PlayerMove : MonoBehaviour
 		state = MyState.Damage;
 		velocity = Vector3.zero;
 		animator.SetTrigger("Damage");
+		Debug.Log("Damage");
 	}
 }
