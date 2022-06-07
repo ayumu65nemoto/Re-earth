@@ -109,7 +109,7 @@ public class CountDown : MonoBehaviour
         }
         else if (time < 0)
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0.001f;
             timeUpText.text = "TIME UP";
             pleaseEnterText.text = "Please Enter";
         if (Input.GetKeyDown(KeyCode.Return))

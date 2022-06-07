@@ -12,6 +12,6 @@ public class ScoreScript : MonoBehaviour
     {
         score = CountDown.Getscore();
 
-        ScoreText.text = string.Format("Score{0}", score);
+        ScoreText.text = string.Format("スコア：{0}", score);
     }
 }

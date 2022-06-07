@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/charaselect.unity
     guid: 03d3d506cc0b37f4494f747eb7b8d663
+  - enabled: 1
+    path: Assets/Scenes/ranking.unity
+    guid: b14124af4acb1e045b50b0dc9be03fd8
   m_configObjects: {}
