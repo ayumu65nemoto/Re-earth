@@ -15,20 +15,20 @@ public class EnemyMove : MonoBehaviour
 
     private CharacterController cCon;
     private Animator animator;
-    private Vector3 destination;
+    private Vector3 destination;    //目的地
     [SerializeField]
-    private float walkSpeed = 1.0f;
-    private Vector3 velocity;
-    private Vector3 direction;
-    private bool arrived;
+    private float walkSpeed = 1.0f; //移動スピード
+    private Vector3 velocity;   //速度
+    private Vector3 direction;  //移動方向
+    private bool arrived;   //到着フラグ
     private SetPosition setPosition;
     [SerializeField]
     private float waitTime = 5f;
-    private float elapsedTime;
+    private float elapsedTime;  //経過時間
     private EnemyState state;
-    private Transform playerTransform;
+    private Transform playerTransform;  //プレイヤーの位置
     [SerializeField]
-    private float freezeTime = 0.5f;
+    private float freezeTime = 0.5f;    //フリーズ時間
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +73,7 @@ public class EnemyMove : MonoBehaviour
             }
             else if(state == EnemyState.Chase)
             {
-                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 1f)
+                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 1.3f)
                 {
                     SetState(EnemyState.Attack);
                 }
@@ -104,6 +104,8 @@ public class EnemyMove : MonoBehaviour
 
     public void SetState(EnemyState tempState, Transform targetObj = null)
     {
+        state = tempState;
+
         if (tempState == EnemyState.Walk)
         {
             arrived = false;
