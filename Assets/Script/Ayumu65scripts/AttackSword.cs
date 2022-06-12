@@ -10,7 +10,6 @@ public class AttackSword : MonoBehaviour
         {
             //Debug.Log("“G‚É“–‚½‚Á‚½");
             col.GetComponent<EnemyMove>().SetState(EnemyMove.EnemyState.Damage);
-            col.GetComponent<EnemyMove>().TakeDamage();
         }
     }
 
