@@ -16,7 +16,7 @@ public class ProcessCharaAnimEvent : MonoBehaviour
     private void Start()
     {
         playerMove = GetComponent<PlayerMove>();
-        cCol = GetComponent<CapsuleCollider>();
+        cCol = equip.GetComponentInChildren<Collider>();
         audioSource = GetComponent<AudioSource>();
     }
     void AttackStart()
@@ -24,10 +24,10 @@ public class ProcessCharaAnimEvent : MonoBehaviour
         if (cCol != null)
         {
             cCol.enabled = true;
-            if (equip.GetChild(0).CompareTag("Sword"))
+            /*if (equip.GetChild(0).CompareTag("Sword"))
             {
                 audioSource.PlayOneShot(attackSound);
-            }
+            }*/
         }
     }
 

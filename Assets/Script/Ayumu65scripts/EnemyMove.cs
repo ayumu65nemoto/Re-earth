@@ -11,7 +11,8 @@ public class EnemyMove : MonoBehaviour
         Chase,
         Attack,
         Freeze,
-        Damage
+        Damage,
+        Dead
     };
 
     private CharacterController cCon;
@@ -30,6 +31,8 @@ public class EnemyMove : MonoBehaviour
     private Transform playerTransform;  //プレイヤーの位置
     [SerializeField]
     private float freezeTime = 0.5f;    //フリーズ時間
+    [SerializeField]
+    private EnemyStates enemyStates;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,7 @@ public class EnemyMove : MonoBehaviour
         cCon = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
+        enemyStates = GetComponent<EnemyStates>();
         setPosition.CreateRandomPosition();
         destination = setPosition.GetDestination();
         velocity = Vector3.zero;
@@ -103,6 +107,20 @@ public class EnemyMove : MonoBehaviour
         cCon.Move(velocity * Time.deltaTime);
     }
 
+    public void TakeDamage()
+    {
+        enemyStates.SetHp(enemyStates.GetHp() - 1);
+        if (enemyStates.GetHp() <= 0)
+        {
+            Dead();
+        }
+    }
+
+    void Dead()
+    {
+        SetState(EnemyState.Dead);
+    }
+
     public void SetState(EnemyState tempState, Transform targetObj = null)
     {
         state = tempState;
@@ -143,6 +161,12 @@ public class EnemyMove : MonoBehaviour
             velocity = Vector3.zero;
             animator.SetBool("Attack", false);
             animator.SetTrigger("Damage");
+        }
+        else if (tempState == EnemyState.Dead)
+        {
+            animator.SetTrigger("Dead");
+            Destroy(this.gameObject, 3f);
+            velocity = Vector3.zero;
         }
     }
 
