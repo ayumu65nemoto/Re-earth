@@ -33,6 +33,8 @@ public class EnemyMove : MonoBehaviour
     private float freezeTime = 0.5f;    //ÉtÉäÅ[ÉYéûä‘
     [SerializeField]
     private EnemyStates enemyStates;
+    [SerializeField]
+    private SphereCollider sCol;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,7 @@ public class EnemyMove : MonoBehaviour
         animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
         enemyStates = GetComponent<EnemyStates>();
+        sCol = GetComponent<SphereCollider>();
         setPosition.CreateRandomPosition();
         destination = setPosition.GetDestination();
         velocity = Vector3.zero;
@@ -109,6 +112,7 @@ public class EnemyMove : MonoBehaviour
 
     public void TakeDamage()
     {
+        //sCol.enabled = false;
         enemyStates.SetHp(enemyStates.GetHp() - 1);
         if (enemyStates.GetHp() <= 0)
         {
