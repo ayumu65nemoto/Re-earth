@@ -131,14 +131,14 @@ public class PlayerMove : MonoBehaviour
 					velocity.y += jumpPower;
 				}*/
 
-				if (Input.GetKeyDown(KeyCode.Space))
+				/*if (Input.GetKeyDown(KeyCode.Space))
 				{
 					velocity.y += jumpPower;
 					Debug.Log("Jump");
-				}
+				}*/
 
 				//Vector3.Scale(a, b); -> aとbを掛けた「三次元ベクトル」を取得できる
-					Cam_forward = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;    //「カメラの」正面
+				Cam_forward = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;    //「カメラの」正面
 
 				move_forward = Cam_forward * InputVertical + cam.transform.right * InputHorizontal;
 
