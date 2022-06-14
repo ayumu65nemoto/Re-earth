@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CountDown : MonoBehaviour
 {
-    private float time = 30.00f;  //経過時間
+    private float time = 10.00f;  //経過時間
     private float time2 = 5.0f;  //ゲームオーバー時の時間
     public int currentHp;
     public int maxHp;      //最大HP
@@ -118,17 +118,23 @@ public class CountDown : MonoBehaviour
                 Panel2.SetActive(true);
             }
         }
-
-        //if (BOSS = 0)
-        //{
-            //Time.timeScale = 0f;
-            //Panel1.SetActive(false);
-            //Panel5.SetActive(true);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Return))
-        //{
-            //Panel5.SetActive(false);
-            //Panel2.SetActive(true);
-        //}
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Title");
+        }
     }
+
+
+    //if (BOSS = 0)
+    //{
+    //Time.timeScale = 0f;
+    //Panel1.SetActive(false);
+    //Panel5.SetActive(true);
+    //}
+    //if (Input.GetKeyDown(KeyCode.Return))
+    //{
+    //Panel5.SetActive(false);
+    //Panel2.SetActive(true);
+    //}
 }
+

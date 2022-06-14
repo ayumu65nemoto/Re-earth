@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
-public class RankingScoreScript : MonoBehaviour
+public class ChangeScoreScript : MonoBehaviour
 {
+    public Text Rank1;
+    public Text Rank2;
+    public Text Rank3;
+    public Text Rank4;
+    public Text Rank5;
+    int score;
+    public Text demo;
     public int[] RankSc = new int[] { 0, 0, 0, 0, 0 };
     string[] ranking = { "Rank1", "Rank2", "Rank3", "Rank4", "Rank5" };
 
     public void Start()
     {
-        int score = 0;
         score = CountDown.Getscore();
+        demo.text = string.Format("スコア：{0}", score);
 
         for (int i = 0; i < 5; i++)
         {
@@ -28,5 +36,14 @@ public class RankingScoreScript : MonoBehaviour
             PlayerPrefs.SetInt(ranking[i], RankSc[i]);
         }
 
+    }
+
+    public void RankOutput()
+    {
+        Rank1.text = string.Format("1位：{0}", PlayerPrefs.GetInt("Rank1"));
+        Rank2.text = string.Format("2位：{0}", PlayerPrefs.GetInt("Rank2"));
+        Rank3.text = string.Format("3位：{0}", PlayerPrefs.GetInt("Rank3"));
+        Rank4.text = string.Format("4位：{0}", PlayerPrefs.GetInt("Rank4"));
+        Rank5.text = string.Format("5位：{0}", PlayerPrefs.GetInt("Rank5"));
     }
 }

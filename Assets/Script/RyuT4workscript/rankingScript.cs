@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScoreScript : MonoBehaviour
+public class rankingScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public void OnClickStartButton()
