@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if(col.tag == "Player")
         {
-            //Debug.Log("“–‚½‚è");
+            Debug.Log("“–‚½‚è");
             col.GetComponent<PlayerMove>().TakeDamage(transform.root);
         }
     }
