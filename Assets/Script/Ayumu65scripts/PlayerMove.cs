@@ -105,6 +105,8 @@ public class PlayerMove : MonoBehaviour
 				//@•ûŒüƒL[‚ª‘½­‰Ÿ‚³‚ê‚Ä‚¢‚é
 				if (input.magnitude > 0f
 					&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")
+					&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")
+					&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3")
 				)
 				{
 					animator.SetFloat("Speed", input.magnitude);

@@ -7,6 +7,8 @@ public class ProcessCharaAnimEvent : MonoBehaviour
     private PlayerMove playerMove;
     [SerializeField]
     private Collider cCol;
+    //[SerializeField]
+    //private Capsule Collider cCol:
     [SerializeField]
     private Transform equip;
     private AudioSource audioSource;
@@ -17,6 +19,7 @@ public class ProcessCharaAnimEvent : MonoBehaviour
     {
         playerMove = GetComponent<PlayerMove>();
         cCol = equip.GetComponentInChildren<Collider>();
+        //Col = equip.GetComponentInChildren<Collider>();
         audioSource = GetComponent<AudioSource>();
     }
     void AttackStart()
@@ -29,6 +32,11 @@ public class ProcessCharaAnimEvent : MonoBehaviour
                 audioSource.PlayOneShot(attackSound);
             }*/
         }
+
+        //if (Col != null)
+        //{
+        //    Col.enabled = true;
+        //}
     }
 
     public void AttackEnd()
@@ -37,6 +45,11 @@ public class ProcessCharaAnimEvent : MonoBehaviour
         {
             cCol.enabled = false;
         }
+
+        //if (Col != null)
+        //{
+        //    Col.enabled = false;
+        //}
     }
 
     void StateEnd()

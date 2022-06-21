@@ -60,7 +60,7 @@ public class AppearScript : MonoBehaviour
         //@“G‚ÌŒü‚«‚ğƒ‰ƒ“ƒ_ƒ€‚ÉŒˆ’è
         var randomRotationY = Random.value * 360f;
 
-        GameObject.Instantiate(enemys[randomValue], new Vector3(vecX, 200, vecZ), Quaternion.Euler(0f, randomRotationY, 0f));
+        GameObject.Instantiate(enemys[randomValue], new Vector3(vecX, 0, vecZ), Quaternion.Euler(0f, randomRotationY, 0f));
 
         numberOfEnemys++;
         elapsedTime = 0f;
