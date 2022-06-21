@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
 	public Vector3 InputMagnitude;
 	public float InputHorizontal;
 	public float InputVertical;
+	public float InputB;
 	//@ƒŒƒC‚ð”ò‚Î‚·ˆÊ’u
 	[SerializeField]
 	private Transform rayPosition;
@@ -113,7 +114,7 @@ public class PlayerMove : MonoBehaviour
 					animator.SetFloat("Speed", 0f);
 				}
 
-				if (Input.GetKeyDown(KeyCode.Q))
+				if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Q))
                 {
 					if (avoidCount > 0)
                     {
