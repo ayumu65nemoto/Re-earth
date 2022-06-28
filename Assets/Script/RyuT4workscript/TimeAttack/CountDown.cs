@@ -77,26 +77,26 @@ public class CountDown : MonoBehaviour
         {
             return;
         }
-        //スライダーの値をリアルタイムで変更
-        hpBar.value = currentHp;
+        ////スライダーの値をリアルタイムで変更
+        //hpBar.value = currentHp;
 
-        //HPテキストの変更
-        hpText.text = currentHp.ToString() + " / " + maxHp.ToString(); //ToString = 文字化
+        ////HPテキストの変更
+        //hpText.text = currentHp.ToString() + " / " + maxHp.ToString(); //ToString = 文字化
 
-        if (currentHp <= 0)
-        {
-            gameOverText.text = "GAME OVER";
-            // 経過時間をカウント
-            time += Time.deltaTime;
-            time2 -= Time.deltaTime;
-            returnText.text = time2.ToString("F0") + "秒後タイトルに戻ります";
+        //if (currentHp <= 0)
+        //{
+        //    gameOverText.text = "GAME OVER";
+        //    // 経過時間をカウント
+        //    time += Time.deltaTime;
+        //    time2 -= Time.deltaTime;
+        //    returnText.text = time2.ToString("F0") + "秒後タイトルに戻ります";
 
-            // 3秒後に画面遷移（Titleへ移動）
-            if ( time2 <= 0)
-            {
-                SceneManager.LoadScene("Title");
-            }
-        }
+        //    // 3秒後に画面遷移（Titleへ移動）
+        //    if ( time2 <= 0)
+        //    {
+        //        SceneManager.LoadScene("Title");
+        //    }
+        //}
 
         if (0 < time)
         {
