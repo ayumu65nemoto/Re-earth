@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class CountDown : MonoBehaviour
 {
-    private float time = 10.00f;  //経過時間
+    private float time = 50.00f;  //経過時間
     private float time2 = 5.0f;  //ゲームオーバー時の時間
     public int currentHp;
     public int maxHp;      //最大HP
     public Slider hpBar;   //HPバー
     public Text hpText;    //HPの数字
-    public static int score = 300000;  //スコア格納変数（シーン共有可）
+    public int mathscore = 300000 ;
+    public static int score;  //スコア格納変数（シーン共有可）
     public GameObject Panel1;
     public GameObject Panel2;
     public GameObject Panel3;
@@ -24,6 +25,7 @@ public class CountDown : MonoBehaviour
     public Text gameOverText;
     public Text returnText;
     public Text scoretext;
+    public int deadcount;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,12 +33,6 @@ public class CountDown : MonoBehaviour
         scoretext.text = string.Format("スコア：{0}", score);
 
         GetComponent<ParticleSystem>().Play();
-    }
-
-
-    public static int Getscore()
-    {
-        return score;
     }
 
     void Start()
@@ -104,11 +100,15 @@ public class CountDown : MonoBehaviour
 
         if (0 < time)
         {
+            mathscore -= 1;
             time -= Time.deltaTime;
             timerText.text = time.ToString("F1");
         }
         else if (time < 0)
         {
+            deadcount = EnemyMove.GetdeadEnemy();
+            score = deadcount * mathscore;
+            scoretext.text = string.Format("スコア：{0}", score);
             Time.timeScale = 0.001f;
             timeUpText.text = "TIME UP";
             pleaseEnterText.text = "Please Enter";
@@ -122,6 +122,12 @@ public class CountDown : MonoBehaviour
         {
             SceneManager.LoadScene("Title");
         }
+    }
+
+
+    public static int Getscore()
+    {
+        return score;
     }
 
 

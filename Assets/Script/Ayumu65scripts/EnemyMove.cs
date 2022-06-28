@@ -36,6 +36,8 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     private SphereCollider sCol;
 
+    public static int deadEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +119,7 @@ public class EnemyMove : MonoBehaviour
         if (enemyStates.GetHp() <= 0)
         {
             Dead();
+            deadEnemy += 50;
         }
     }
 
@@ -177,5 +180,10 @@ public class EnemyMove : MonoBehaviour
     public EnemyState GetState()
     {
         return state;
+    }
+
+    public static int GetdeadEnemy()
+    {
+        return deadEnemy;
     }
 }
