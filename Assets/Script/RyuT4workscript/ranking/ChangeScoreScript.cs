@@ -19,7 +19,7 @@ public class ChangeScoreScript : MonoBehaviour
     public void Start()
     {
         score = CountDown.Getscore();
-        demo.text = string.Format("前回スコア：{0}", score);
+        demo.text = string.Format("スコア：{0}", score);
 
         for (int i = 0; i < 5; i++)
         {
