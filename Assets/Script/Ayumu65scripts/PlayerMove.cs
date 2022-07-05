@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
 	public float InputHorizontal;
 	public float InputVertical;
 	public float InputB;
+	public float gravity;
 	//　レイを飛ばす位置
 	[SerializeField]
 	private Transform rayPosition;
@@ -36,7 +37,8 @@ public class PlayerMove : MonoBehaviour
 	{
 		Normal,
 		Damage,
-		Attack
+		Attack,
+		Fall
 	};
 
 	public void SetState(MyState tempState)
@@ -67,6 +69,18 @@ public class PlayerMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		//if (cCon.isGrounded)
+  //      {
+		//	velocity.y = 0f;  //Y方向への速度をゼロにする
+		//	animator.SetBool("Fall", false);
+		//}
+  //      else
+  //      {
+		//	velocity.y += Physics.gravity.y * Time.deltaTime;
+		//	cCon.Move(velocity * Time.deltaTime);
+		//	animator.SetBool("Fall", true);
+		//}
+
 		if (state == MyState.Normal) {
 			if (!cCon.isGrounded)
 			{
@@ -82,12 +96,16 @@ public class PlayerMove : MonoBehaviour
 
 				//　接地確認用にレイを視覚化
 				Debug.DrawLine(rayPosition.position, (rayPosition.position - transform.up * rayRange), Color.red);
-
+				velocity.y += Physics.gravity.y * Time.deltaTime;
+				cCon.Move(velocity * Time.deltaTime);
+				animator.SetBool("Fall", true);
 			}
 
 			if (cCon.isGrounded || isGround)
 			{
-				//　地面に接地してる時は速度を初期化
+				//velocity.y = 0f;  //Y方向への速度をゼロにする
+				animator.SetBool("Fall", false);
+								  //　地面に接地してる時は速度を初期化
 				if (cCon.isGrounded)
 				{
 					velocity = Vector3.zero;
@@ -126,13 +144,13 @@ public class PlayerMove : MonoBehaviour
 					}
 				}
 
-				/*if (Input.GetKeyDown(KeyCode.Space)
+				if (Input.GetKeyDown(KeyCode.Space)
 				&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")
 				)
 				{
 					animator.SetTrigger("Jump");
 					velocity.y += jumpPower;
-				}*/
+				}
 
 				/*if (Input.GetKeyDown(KeyCode.Space))
 				{
@@ -146,6 +164,8 @@ public class PlayerMove : MonoBehaviour
 				move_forward = Cam_forward * InputVertical + cam.transform.right * InputHorizontal;
 
 				velocity = move_forward * walkSpeed + new Vector3(0, velocity.y, 0);
+
+				velocity.y += Physics.gravity.y * Time.deltaTime;
 
 				cCon.Move(velocity * Time.deltaTime);
 
