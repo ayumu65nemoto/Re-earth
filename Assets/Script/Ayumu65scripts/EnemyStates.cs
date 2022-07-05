@@ -9,7 +9,9 @@ public class EnemyStates : MonoBehaviour
     private int hp = 3;
     //@“G‚ÌUŒ‚—Í
     [SerializeField]
-    private int attackPower = 1;
+    public int Power;
+    public int attackPower;
+    private int powerCount;
 
     public void SetHp(int hp)
     {
@@ -24,12 +26,23 @@ public class EnemyStates : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerCount = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (powerCount > 0)
+        {
+            StartCoroutine("SpeedUp");
+            powerCount -= 1;
+        }
+    }
+
+    IEnumerator SpeedUp()
+    {
+        attackPower *= 5;
+        yield return new WaitForSeconds(3.0f);
+        attackPower = Power;
     }
 }

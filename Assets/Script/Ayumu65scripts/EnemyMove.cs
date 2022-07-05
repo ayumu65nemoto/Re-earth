@@ -115,7 +115,7 @@ public class EnemyMove : MonoBehaviour
     public void TakeDamage()
     {
         //sCol.enabled = false;
-        enemyStates.SetHp(enemyStates.GetHp() - 1);
+        enemyStates.SetHp(enemyStates.GetHp() - enemyStates.attackPower);
         if (enemyStates.GetHp() <= 0)
         {
             Dead();

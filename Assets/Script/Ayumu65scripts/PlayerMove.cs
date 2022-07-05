@@ -8,10 +8,12 @@ public class PlayerMove : MonoBehaviour
 	private Rigidbody rb;
     private Vector3 velocity;
     [SerializeField]
-    private float walkSpeed;
+    private float Speed;
+	private float walkSpeed;
     private Animator animator;
 	private MyState state;
 	private int avoidCount;
+	private int speedCount;
 	public float jumpPower = 10f;
 	public GameObject cam;
 	public Vector3 Cam_forward;
@@ -63,6 +65,8 @@ public class PlayerMove : MonoBehaviour
 		animator = GetComponent<Animator>();
         velocity = Vector3.zero;
 		avoidCount = 5;
+		speedCount = 3;
+		walkSpeed = Speed;
 	}
 
 
@@ -152,11 +156,14 @@ public class PlayerMove : MonoBehaviour
 					velocity.y += jumpPower;
 				}
 
-				/*if (Input.GetKeyDown(KeyCode.Space))
-				{
-					velocity.y += jumpPower;
-					Debug.Log("Jump");
-				}*/
+				if (Input.GetKeyDown(KeyCode.E))
+                {
+					if (speedCount > 0)
+                    {
+						StartCoroutine("SpeedUp");
+						speedCount -= 1;
+					}
+				}
 
 				//Vector3.Scale(a, b); -> aとbを掛けた「三次元ベクトル」を取得できる
 				Cam_forward = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;    //「カメラの」正面
@@ -179,11 +186,6 @@ public class PlayerMove : MonoBehaviour
 				}
 			}
 
-			/*if (Input.GetKeyDown("space") && cCon.isGrounded)
-			{
-				cCon.Move(new Vector3(0, jumpPower, 0));
-			}*/
-
 			if (Input.GetButtonDown("Fire1")
 					&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")
 					&& !animator.IsInTransition(0)
@@ -202,5 +204,12 @@ public class PlayerMove : MonoBehaviour
 		velocity = Vector3.zero;
 		animator.SetTrigger("Damage");
 		GetComponent<PlayerStatus>().Damage();
+	}
+
+	IEnumerator SpeedUp()
+	{
+		walkSpeed *= 5.0f;
+		yield return new WaitForSeconds(3.0f);
+		walkSpeed = Speed;
 	}
 }
