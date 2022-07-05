@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SearchCharacterII : MonoBehaviour
 {
-    private EnemyShot enemyShot;
+    private EnemyMove2 enemyMove2;
     int BallShotCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyShot = GetComponentInParent<EnemyShot>();
+        enemyMove2 = GetComponentInParent<EnemyMove2>();
         BallShotCount = 0;
     }
 
@@ -21,7 +21,7 @@ public class SearchCharacterII : MonoBehaviour
         {
             if (BallShotCount % 120 == 0)
             {
-                enemyShot.BallShot();
+                enemyMove2.BallShot();
             }
 
             BallShotCount += 1;

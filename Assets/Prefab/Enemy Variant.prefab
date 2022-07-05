@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
+  Power: 1
   attackPower: 1
 --- !u!114 &1022304455
 MonoBehaviour:
