@@ -13,4 +13,14 @@ public class Destroy_Bullet : MonoBehaviour
         }
 
     }
+
+    //void OnTriggerEnter(Collider col)
+    //{
+    //    if (col.tag == "Player")
+    //    {
+    //        col.GetComponent<PlayerMove>().TakeDamage(transform.root);
+    //        Destroy(gameObject);
+    //    }
+
+    //}
 }

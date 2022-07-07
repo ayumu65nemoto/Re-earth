@@ -19,7 +19,7 @@ public class AppearScript : MonoBehaviour
 
     private int vecX;
     private int vecZ;
-    private int fieldSize = 240;
+    private int fieldSize = 25;
 
     // Start is called before the first frame update
     void Start()
