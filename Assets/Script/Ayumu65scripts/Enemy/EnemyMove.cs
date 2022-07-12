@@ -123,7 +123,8 @@ public class EnemyMove : MonoBehaviour
     {
         //sCol.enabled = false;
         audioSource.PlayOneShot(damageSound);
-        enemyStates.SetHp(enemyStates.GetHp() - playerMove.Attack());
+        //enemyStates.SetHp(enemyStates.GetHp() - playerMove.attackPower);
+        enemyStates.SetHp(enemyStates.GetHp() - 1);
         if (enemyStates.GetHp() <= 0)
         {
             Dead();

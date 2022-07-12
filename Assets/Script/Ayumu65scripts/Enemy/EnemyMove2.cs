@@ -123,7 +123,8 @@ public class EnemyMove2 : MonoBehaviour
     public void TakeDamage()
     {
         audioSource.PlayOneShot(damageSound);
-        enemyStates.SetHp(enemyStates.GetHp() - playerMove.attackPower);
+        //enemyStates.SetHp(enemyStates.GetHp() - playerMove.attackPower);
+        enemyStates.SetHp(enemyStates.GetHp() - 1);
         if (enemyStates.GetHp() <= 0)
         {
             Dead();

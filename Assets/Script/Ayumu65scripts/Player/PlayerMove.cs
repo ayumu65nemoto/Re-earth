@@ -265,8 +265,8 @@ public class PlayerMove : MonoBehaviour
 		attackPower = Power;
 	}
 
-	public int Attack()
-    {
-		return attackPower;
-    }
+	//public int Attack()
+ //   {
+	//	return attackPower;
+ //   }
 }
