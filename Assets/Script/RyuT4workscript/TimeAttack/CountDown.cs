@@ -26,10 +26,10 @@ public class CountDown : MonoBehaviour
     public Text returnText;
     public Text scoretext;
     public int deadcount;
+    public int deadcount2;
 
     private void OnCollisionEnter(Collision collision)
     {
-        score -= 10;
         scoretext.text = string.Format("スコア：{0}", score);
 
         GetComponent<ParticleSystem>().Play();
@@ -39,7 +39,7 @@ public class CountDown : MonoBehaviour
     {
         deadcount = 0;
         mathscore = 0;
-        mathscore = 300000;
+        mathscore = 30000;
         //最大HPを設定
         maxHp = 100;
         //現在値を最大に
@@ -111,7 +111,8 @@ public class CountDown : MonoBehaviour
         else if (time < 0)
         {
             deadcount = EnemyMove.GetdeadEnemy();
-            score = deadcount * mathscore;
+            deadcount2 = EnemyMove2.GetdeadEnemy2();
+            score = (deadcount+ deadcount2) * mathscore;
             scoretext.text = string.Format("スコア：{0}", score);
             Time.timeScale = 0.001f;
             timeUpText.text = "TIME UP";

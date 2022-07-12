@@ -41,6 +41,7 @@ public class BossMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        deadEnemy = 0;
         cCon = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
@@ -119,7 +120,7 @@ public class BossMove : MonoBehaviour
         if (enemyStates.GetHp() <= 0)
         {
             Dead();
-            deadEnemy += 50;
+            deadEnemy += 1000;
         }
     }
 

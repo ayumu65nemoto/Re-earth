@@ -36,7 +36,7 @@ public class EnemyMove2 : MonoBehaviour
     [SerializeField]
     private SphereCollider sCol;
 
-    public static int deadEnemy;
+    public static int deadEnemy2;
 
     public GameObject player;           //プレイヤー
     public GameObject ball;             //敵が発射する弾オブジェクト
@@ -56,7 +56,8 @@ public class EnemyMove2 : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(EnemyState.Walk);
-        //StartCoroutine("BallShot");
+        //StartCoroutine("BallShot");]
+        deadEnemy2 = 0;
     }
 
     // Update is called once per frame
@@ -124,7 +125,7 @@ public class EnemyMove2 : MonoBehaviour
         if (enemyStates.GetHp() <= 0)
         {
             Dead();
-            deadEnemy += 50;
+            deadEnemy2 += 50;
         }
     }
 
@@ -188,9 +189,9 @@ public class EnemyMove2 : MonoBehaviour
         return state;
     }
 
-    public static int GetdeadEnemy()
+    public static int GetdeadEnemy2()
     {
-        return deadEnemy;
+        return deadEnemy2;
     }
 
     //public void BallShot()
