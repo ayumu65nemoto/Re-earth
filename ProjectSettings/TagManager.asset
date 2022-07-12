@@ -9,6 +9,7 @@ TagManager:
   - ball
   - Enemy2
   - Boss
+  - Wall
   layers:
   - Default
   - TransparentFX

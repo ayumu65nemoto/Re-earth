@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Destroy_Bullet : MonoBehaviour
 {
-    
+
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Wall")              //•Ç‚É“–‚½‚Á‚½‚ç’e‚ªÁ‚¦‚é
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Player")           //ƒvƒŒƒCƒ„[‚É“–‚½‚Á‚½‚ç‹…‚ªÁ‚¦‚é
         {
             Destroy(gameObject);
             //GetComponent<PlayerMove>().TakeDamage(transform.root);
