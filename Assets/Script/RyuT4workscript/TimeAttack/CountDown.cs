@@ -28,6 +28,7 @@ public class CountDown : MonoBehaviour
     public int deadcount;
     public int deadcount2;
     public int CLEAR;
+    public int deadcountBoss;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -140,6 +141,10 @@ public class CountDown : MonoBehaviour
             Time.timeScale = 0.001f;
             Panel1.SetActive(false);
             Panel5.SetActive(true);
+            deadcount = EnemyMove.GetdeadEnemy();
+            deadcount2 = EnemyMove2.GetdeadEnemy2();
+            deadcountBoss = BossMove.GetdeadEnemyBoss();
+            score = (deadcount + deadcount2 + deadcountBoss) * mathscore;
 
             if (Input.GetKeyDown(KeyCode.Return))
             {

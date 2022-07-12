@@ -10,6 +10,12 @@ public class demoUIscript : MonoBehaviour
     public float countTime = 5.0f;
     public Text democount;
     public int demo1 = 5;
+
+    public Image UIobj2;
+    public float countTime2 = 5.0f;
+    public Text democount2;
+    public int demo2 = 5;
+
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +34,20 @@ public class demoUIscript : MonoBehaviour
             }
         }
 
+        if (demo2 > 0)
+        {
 
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                demo2 -= 1;
+                UIobj2.fillAmount += 1;
+                democount2.text = string.Format("{0}", demo2);
+            }
+            if (roop)
+            {
+                UIobj2.fillAmount -= 4.0f / countTime2 * Time.deltaTime;
+            }
+        }
 
     }
 
