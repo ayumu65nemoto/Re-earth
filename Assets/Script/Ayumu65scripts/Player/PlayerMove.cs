@@ -138,23 +138,13 @@ public class PlayerMove : MonoBehaviour
 					animator.SetFloat("Speed", 0f);
 				}
 
-				if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Q))
-                {
-					if (avoidCount > 0)
-                    {
-						velocity += input.normalized * walkSpeed * 300;
-						cCon.Move(velocity * Time.deltaTime);
-						avoidCount -= 1;
-					}
-				}
-
-				if (Input.GetKeyDown(KeyCode.Space)
-				&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")
-				)
-				{
-					animator.SetTrigger("Jump");
-					velocity.y += jumpPower;
-				}
+				//if (Input.GetKeyDown(KeyCode.Space)
+				//&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")
+				//)
+				//{
+				//	animator.SetTrigger("Jump");
+				//	velocity.y += jumpPower;
+				//}
 
 				if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -183,6 +173,16 @@ public class PlayerMove : MonoBehaviour
 				{
 					this.transform.rotation = Quaternion.LookRotation(move_forward);
 					//Debug.Log("a");
+				}
+
+				if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Q))
+				{
+					if (avoidCount > 0)
+					{
+						velocity = move_forward * walkSpeed * 200 + new Vector3(0, velocity.y, 0);
+						cCon.Move(velocity * Time.deltaTime);
+						avoidCount -= 1;
+					}
 				}
 			}
 
