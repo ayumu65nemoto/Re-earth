@@ -119,7 +119,12 @@ public class CountDown : MonoBehaviour
             score += deadcount2 * mathscore;
             score = deadcountBoss * mathscore;
             clearText.text = "CLEAR";
+            CLEAR = 2;
 
+        }
+
+        if(CLEAR == 2)
+        {
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Panel1.SetActive(false);
