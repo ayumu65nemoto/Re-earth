@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CountDown : MonoBehaviour
 {
-    private float time = 50.00f;  //経過時間
+    private float time = 500.00f;  //経過時間
     private float time2 = 5.0f;  //ゲームオーバー時の時間
     public int currentHp;
     public int maxHp;      //最大HP
@@ -25,10 +25,12 @@ public class CountDown : MonoBehaviour
     public Text gameOverText;
     public Text returnText;
     public Text scoretext;
+    public Text clearText;
     public int deadcount;
     public int deadcount2;
     public int CLEAR;
     public int deadcountBoss;
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -104,6 +106,32 @@ public class CountDown : MonoBehaviour
         //        SceneManager.LoadScene("Title");
         //    }
         //}
+        CLEAR = BossMove.GetdeadEnemyclear();
+
+        if (CLEAR == 1)
+        {
+            Time.timeScale = 0.001f;
+
+            deadcount = EnemyMove.GetdeadEnemy();
+            deadcount2 = EnemyMove2.GetdeadEnemy2();
+            deadcountBoss = BossMove.GetdeadEnemyBoss();
+            score += deadcount * mathscore;
+            score += deadcount2 * mathscore;
+            score = deadcountBoss * mathscore;
+            clearText.text = "CLEAR";
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Panel1.SetActive(false);
+                Panel2.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("Title");
+            }
+        }
 
         if (0 < time)
         {
@@ -115,7 +143,8 @@ public class CountDown : MonoBehaviour
         {
             deadcount = EnemyMove.GetdeadEnemy();
             deadcount2 = EnemyMove2.GetdeadEnemy2();
-            score = (deadcount+ deadcount2) * mathscore;
+            score += deadcount * mathscore;
+            score += deadcount2 * mathscore;
             scoretext.text = string.Format("スコア：{0}", score);
             Time.timeScale = 0.001f;
             timeUpText.text = "TIME UP";
@@ -134,30 +163,7 @@ public class CountDown : MonoBehaviour
         }
 
 
-        CLEAR = BossMove.GetdeadEnemyclear();
 
-        if(CLEAR == 1)
-        {
-            Time.timeScale = 0.001f;
-            Panel1.SetActive(false);
-            Panel5.SetActive(true);
-            deadcount = EnemyMove.GetdeadEnemy();
-            deadcount2 = EnemyMove2.GetdeadEnemy2();
-            deadcountBoss = BossMove.GetdeadEnemyBoss();
-            score = (deadcount + deadcount2 + deadcountBoss) * mathscore;
-
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Panel5.SetActive(false);
-                Panel2.SetActive(true);
-            }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Time.timeScale = 1f;
-                SceneManager.LoadScene("Title");
-            }
-        }
 
     }
 
