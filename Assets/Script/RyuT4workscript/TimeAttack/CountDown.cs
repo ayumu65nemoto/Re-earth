@@ -27,6 +27,7 @@ public class CountDown : MonoBehaviour
     public Text scoretext;
     public int deadcount;
     public int deadcount2;
+    public int CLEAR;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -37,6 +38,7 @@ public class CountDown : MonoBehaviour
 
     void Start()
     {
+        CLEAR = 0;
         deadcount = 0;
         mathscore = 0;
         mathscore = 30000;
@@ -117,17 +119,41 @@ public class CountDown : MonoBehaviour
             Time.timeScale = 0.001f;
             timeUpText.text = "TIME UP";
             pleaseEnterText.text = "Please Enter";
-        if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 Panel1.SetActive(false);
                 Panel2.SetActive(true);
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("Title");
+            }
         }
-        if (Input.GetKeyDown(KeyCode.R))
+
+
+        CLEAR = BossMove.GetdeadEnemyclear();
+
+        if(CLEAR == 1)
         {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene("Title");
+            Time.timeScale = 0.001f;
+            Panel1.SetActive(false);
+            Panel5.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Panel5.SetActive(false);
+                Panel2.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("Title");
+            }
         }
+
     }
 
 

@@ -36,12 +36,14 @@ public class BossMove : MonoBehaviour
     [SerializeField]
     private SphereCollider sCol;
 
-    public static int deadEnemy;
+    public static int deadEnemyBoss;
+    public static int clear;
 
     // Start is called before the first frame update
     void Start()
     {
-        deadEnemy = 0;
+        clear = 0;
+        deadEnemyBoss = 0;
         cCon = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
@@ -120,7 +122,8 @@ public class BossMove : MonoBehaviour
         if (enemyStates.GetHp() <= 0)
         {
             Dead();
-            deadEnemy += 1000;
+            deadEnemyBoss += 1000;
+            clear = 1;
         }
     }
 
@@ -183,8 +186,13 @@ public class BossMove : MonoBehaviour
         return state;
     }
 
-    public static int GetdeadEnemy()
+    public static int GetdeadEnemyBoss()
     {
-        return deadEnemy;
+        return deadEnemyBoss;
+    }
+
+    public static int GetdeadEnemyclear()
+    {
+        return clear;
     }
 }
