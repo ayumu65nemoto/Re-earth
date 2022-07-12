@@ -10,17 +10,7 @@ public class Destroy_Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            //GetComponent<PlayerMove>().TakeDamage(transform.root);
         }
-
     }
-
-    //void OnTriggerEnter(Collider col)
-    //{
-    //    if (col.tag == "Player")
-    //    {
-    //        col.GetComponent<PlayerMove>().TakeDamage(transform.root);
-    //        Destroy(gameObject);
-    //    }
-
-    //}
 }

@@ -35,6 +35,9 @@ public class EnemyMove : MonoBehaviour
     private EnemyStates enemyStates;
     [SerializeField]
     private SphereCollider sCol;
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip damageSound;
 
     public static int deadEnemy;
 
@@ -53,6 +56,7 @@ public class EnemyMove : MonoBehaviour
         elapsedTime = 0f;
         SetState(EnemyState.Walk);
         deadEnemy = 0;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -116,6 +120,7 @@ public class EnemyMove : MonoBehaviour
     public void TakeDamage()
     {
         //sCol.enabled = false;
+        audioSource.PlayOneShot(damageSound);
         enemyStates.SetHp(enemyStates.GetHp() - enemyStates.attackPower);
         if (enemyStates.GetHp() <= 0)
         {

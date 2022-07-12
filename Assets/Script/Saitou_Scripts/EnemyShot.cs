@@ -10,13 +10,13 @@ public class EnemyShot : MonoBehaviour
 
     void Start()
     {
-        transform.LookAt(player.transform);
+        //transform.LookAt(player.transform);
         StartCoroutine("BallShot");
     }
 
     void Update()
     {
-        transform.LookAt(player.transform);     //プレイヤーのいる方向に向く
+        //transform.LookAt(player.transform);     //プレイヤーのいる方向に向く
     }
 
     //IEnumerator BallShot()

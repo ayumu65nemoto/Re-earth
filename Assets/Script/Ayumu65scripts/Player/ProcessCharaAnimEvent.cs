@@ -27,10 +27,8 @@ public class ProcessCharaAnimEvent : MonoBehaviour
         if (cCol != null)
         {
             cCol.enabled = true;
-            /*if (equip.GetChild(0).CompareTag("Sword"))
-            {
-                audioSource.PlayOneShot(attackSound);
-            }*/
+            
+            //audioSource.PlayOneShot(attackSound);
         }
 
         //if (Col != null)

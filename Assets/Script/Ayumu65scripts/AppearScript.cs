@@ -16,6 +16,7 @@ public class AppearScript : MonoBehaviour
     private float elapsedTime;
     //　他のキャラとの距離
     public float radius;
+    [SerializeField] GameObject Player;
 
     private int vecX;
     private int vecZ;
@@ -60,7 +61,18 @@ public class AppearScript : MonoBehaviour
         //　敵の向きをランダムに決定
         var randomRotationY = Random.value * 360f;
 
-        GameObject.Instantiate(enemys[randomValue], new Vector3(vecX, 0, vecZ), Quaternion.Euler(0f, randomRotationY, 0f));
+        var enemy = Instantiate(enemys[randomValue], new Vector3(vecX, 0, vecZ), Quaternion.Euler(0f, randomRotationY, 0f));
+        var ene = enemy.GetComponent<EnemyShot>();
+        if (ene != null)
+        {
+            ene.player = Player;
+        }
+
+        var ene2 = enemy.GetComponent<EnemyMove2>();
+        if (ene2 != null)
+        {
+            ene2.player = Player;
+        }
 
         numberOfEnemys++;
         elapsedTime = 0f;

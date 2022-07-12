@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     private Animator animator;
 	private MyState state;
 	private int avoidCount;
+	private int attackCount;
 	private int speedCount;
 	public float jumpPower = 10f;
 	public GameObject cam;
@@ -34,6 +35,19 @@ public class PlayerMove : MonoBehaviour
 	//Å@â∫ï˚å¸Ç…ã≠êßìIÇ…â¡Ç¶ÇÈóÕ
 	[SerializeField]
 	private Vector3 addForceDownPower = Vector3.down;
+	private AudioSource audioSource;
+	[SerializeField]
+	private AudioClip attackVoice1;
+	[SerializeField]
+	private AudioClip attackVoice2;
+	[SerializeField]
+	private AudioClip attackVoice3;
+	[SerializeField]
+	private AudioClip damageVoice;
+	[SerializeField]
+	private AudioClip avoidVoice;
+	[SerializeField]
+	private AudioClip speedUpVoice;
 
 	public enum MyState
 	{
@@ -65,26 +79,16 @@ public class PlayerMove : MonoBehaviour
 		animator = GetComponent<Animator>();
         velocity = Vector3.zero;
 		avoidCount = 5;
+		attackCount = 0;
 		speedCount = 3;
 		walkSpeed = Speed;
+		audioSource = GetComponent<AudioSource>();
 	}
 
 
 	// Update is called once per frame
 	void Update()
 	{
-		//if (cCon.isGrounded)
-  //      {
-		//	velocity.y = 0f;  //Yï˚å¸Ç÷ÇÃë¨ìxÇÉ[ÉçÇ…Ç∑ÇÈ
-		//	animator.SetBool("Fall", false);
-		//}
-  //      else
-  //      {
-		//	velocity.y += Physics.gravity.y * Time.deltaTime;
-		//	cCon.Move(velocity * Time.deltaTime);
-		//	animator.SetBool("Fall", true);
-		//}
-
 		if (state == MyState.Normal) {
 			if (!cCon.isGrounded)
 			{
@@ -179,7 +183,8 @@ public class PlayerMove : MonoBehaviour
 				{
 					if (avoidCount > 0)
 					{
-						velocity = move_forward * walkSpeed * 200 + new Vector3(0, velocity.y, 0);
+						audioSource.PlayOneShot(avoidVoice);
+						velocity = move_forward * walkSpeed * 100 + new Vector3(0, velocity.y, 0);
 						cCon.Move(velocity * Time.deltaTime);
 						avoidCount -= 1;
 					}
@@ -191,15 +196,27 @@ public class PlayerMove : MonoBehaviour
 					&& !animator.IsInTransition(0)
 				)
 			{
+				attackCount += 1;
 				animator.SetTrigger("Attack");
 				SetState(MyState.Attack);
 				//Debug.Log(state);
+				if (attackCount  < 3)
+                {
+					audioSource.PlayOneShot(attackVoice1);
+				}
+				
+				if (attackCount == 3)
+                {
+					audioSource.PlayOneShot(attackVoice3);
+					attackCount = 0;
+				}
 			}
 		}
 	}
 
 	public void TakeDamage(Transform enemyTransform)
 	{
+		audioSource.PlayOneShot(damageVoice);
 		state = MyState.Damage;
 		velocity = Vector3.zero;
 		animator.SetTrigger("Damage");
@@ -208,6 +225,7 @@ public class PlayerMove : MonoBehaviour
 
 	public void TakeBossDamage(Transform enemyTransform)
     {
+		audioSource.PlayOneShot(damageVoice);
 		state = MyState.Damage;
 		velocity = Vector3.zero;
 		animator.SetTrigger("Damage");
@@ -216,6 +234,7 @@ public class PlayerMove : MonoBehaviour
 
 	IEnumerator SpeedUp()
 	{
+		audioSource.PlayOneShot(speedUpVoice);
 		walkSpeed *= 5.0f;
 		yield return new WaitForSeconds(3.0f);
 		walkSpeed = Speed;
