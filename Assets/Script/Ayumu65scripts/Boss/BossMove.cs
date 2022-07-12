@@ -35,6 +35,9 @@ public class BossMove : MonoBehaviour
     private EnemyStates enemyStates;
     [SerializeField]
     private SphereCollider sCol;
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip damageSound;
 
     public static int deadEnemyBoss;
     public static int clear;
@@ -55,6 +58,7 @@ public class BossMove : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(EnemyState.Walk);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -117,7 +121,7 @@ public class BossMove : MonoBehaviour
 
     public void TakeDamage()
     {
-        //sCol.enabled = false;
+        audioSource.PlayOneShot(damageSound);
         enemyStates.SetHp(enemyStates.GetHp() - enemyStates.attackPower);
         if (enemyStates.GetHp() <= 0)
         {
