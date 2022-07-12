@@ -24,6 +24,7 @@ public class EnemyMove : MonoBehaviour
     private Vector3 direction;  //ˆÚ“®•ûŒü
     private bool arrived;   //“ž’…ƒtƒ‰ƒO
     private SetPosition setPosition;
+    private PlayerMove playerMove;
     [SerializeField]
     private float waitTime = 5f;
     private float elapsedTime;  //Œo‰ßŽžŠÔ
@@ -57,6 +58,7 @@ public class EnemyMove : MonoBehaviour
         SetState(EnemyState.Walk);
         deadEnemy = 0;
         audioSource = GetComponent<AudioSource>();
+        playerMove = GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -121,7 +123,7 @@ public class EnemyMove : MonoBehaviour
     {
         //sCol.enabled = false;
         audioSource.PlayOneShot(damageSound);
-        enemyStates.SetHp(enemyStates.GetHp() - enemyStates.attackPower);
+        enemyStates.SetHp(enemyStates.GetHp() - playerMove.Attack());
         if (enemyStates.GetHp() <= 0)
         {
             Dead();

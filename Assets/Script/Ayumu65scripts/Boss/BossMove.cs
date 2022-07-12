@@ -24,6 +24,7 @@ public class BossMove : MonoBehaviour
     private Vector3 direction;  //ˆÚ“®•ûŒü
     private bool arrived;   //“ž’…ƒtƒ‰ƒO
     private SetPosition setPosition;
+    private PlayerMove playerMove;
     [SerializeField]
     private float waitTime = 5f;
     private float elapsedTime;  //Œo‰ßŽžŠÔ
@@ -59,6 +60,7 @@ public class BossMove : MonoBehaviour
         elapsedTime = 0f;
         SetState(EnemyState.Walk);
         audioSource = GetComponent<AudioSource>();
+        playerMove = GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -122,7 +124,7 @@ public class BossMove : MonoBehaviour
     public void TakeDamage()
     {
         audioSource.PlayOneShot(damageSound);
-        enemyStates.SetHp(enemyStates.GetHp() - enemyStates.attackPower);
+        enemyStates.SetHp(enemyStates.GetHp() - playerMove.attackPower);
         if (enemyStates.GetHp() <= 0)
         {
             Dead();

@@ -24,6 +24,7 @@ public class EnemyMove2 : MonoBehaviour
     private Vector3 direction;  //ˆÚ“®•ûŒü
     private bool arrived;   //“ž’…ƒtƒ‰ƒO
     private SetPosition setPosition;
+    private PlayerMove playerMove;
     [SerializeField]
     private float waitTime = 5f;
     private float elapsedTime;  //Œo‰ßŽžŠÔ
@@ -61,6 +62,7 @@ public class EnemyMove2 : MonoBehaviour
         SetState(EnemyState.Walk);
         deadEnemy2 = 0;
         audioSource = GetComponent<AudioSource>();
+        playerMove = GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -92,10 +94,7 @@ public class EnemyMove2 : MonoBehaviour
             }
             else if(state == EnemyState.Chase)
             {
-                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 1.2f)
-                {
-                    SetState(EnemyState.Attack);
-                }
+                transform.LookAt(player.transform);
             }
 
         }
@@ -124,7 +123,7 @@ public class EnemyMove2 : MonoBehaviour
     public void TakeDamage()
     {
         audioSource.PlayOneShot(damageSound);
-        enemyStates.SetHp(enemyStates.GetHp() - enemyStates.attackPower);
+        enemyStates.SetHp(enemyStates.GetHp() - playerMove.attackPower);
         if (enemyStates.GetHp() <= 0)
         {
             Dead();

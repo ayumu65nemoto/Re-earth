@@ -12,9 +12,15 @@ public class PlayerMove : MonoBehaviour
 	private float walkSpeed;
     private Animator animator;
 	private MyState state;
+
 	private int avoidCount;
 	private int attackCount;
 	private int speedCount;
+	private int powerCount;
+	public int attackPower;
+	[SerializeField]
+	public int Power;
+
 	public float jumpPower = 10f;
 	public GameObject cam;
 	public Vector3 Cam_forward;
@@ -35,6 +41,7 @@ public class PlayerMove : MonoBehaviour
 	//　下方向に強制的に加える力
 	[SerializeField]
 	private Vector3 addForceDownPower = Vector3.down;
+
 	private AudioSource audioSource;
 	[SerializeField]
 	private AudioClip attackVoice1;
@@ -81,6 +88,7 @@ public class PlayerMove : MonoBehaviour
 		avoidCount = 5;
 		attackCount = 0;
 		speedCount = 3;
+		powerCount = 3;
 		walkSpeed = Speed;
 		audioSource = GetComponent<AudioSource>();
 	}
@@ -158,6 +166,15 @@ public class PlayerMove : MonoBehaviour
 						speedCount -= 1;
 					}
 				}
+
+				if (Input.GetKeyDown(KeyCode.Z))
+                {
+					if (powerCount > 0)
+                    {
+						StartCoroutine("PowerUp");
+						powerCount -= 1;
+                    }
+                }
 
 				//Vector3.Scale(a, b); -> aとbを掛けた「三次元ベクトル」を取得できる
 				Cam_forward = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;    //「カメラの」正面
@@ -239,4 +256,17 @@ public class PlayerMove : MonoBehaviour
 		yield return new WaitForSeconds(3.0f);
 		walkSpeed = Speed;
 	}
+
+	IEnumerator PowerUp()
+	{
+		audioSource.PlayOneShot(speedUpVoice);
+		attackPower *= 5;
+		yield return new WaitForSeconds(3.0f);
+		attackPower = Power;
+	}
+
+	public int Attack()
+    {
+		return attackPower;
+    }
 }
