@@ -52,6 +52,7 @@ public class EnemyMove : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(EnemyState.Walk);
+        deadEnemy = 0;
     }
 
     // Update is called once per frame
