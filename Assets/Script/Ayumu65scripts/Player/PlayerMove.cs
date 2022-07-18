@@ -56,6 +56,11 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField]
 	private AudioClip speedUpVoice;
 
+	public bool avoidSkill;
+	public bool speedSkill;
+	public float avoidTime;
+	public float speedTime;
+
 	public enum MyState
 	{
 		Normal,
@@ -91,6 +96,11 @@ public class PlayerMove : MonoBehaviour
 		powerCount = 3;
 		walkSpeed = Speed;
 		audioSource = GetComponent<AudioSource>();
+		attackPower = Power;
+		avoidSkill = true;
+		speedSkill = true;
+		avoidTime = 0f;
+		speedTime = 0f;
 	}
 
 
@@ -158,23 +168,37 @@ public class PlayerMove : MonoBehaviour
 				//	velocity.y += jumpPower;
 				//}
 
-				if (Input.GetKeyDown(KeyCode.E))
-                {
-					if (speedCount > 0)
-                    {
-						StartCoroutine("SpeedUp");
-						speedCount -= 1;
+				if (speedSkill == true)
+				{
+					if (Input.GetKeyDown("joystick button 4") || Input.GetKeyDown(KeyCode.E))
+					{
+						if (speedCount > 0)
+						{
+							StartCoroutine("SpeedUp");
+							speedCount -= 1;
+							speedSkill = false;
+						}
 					}
 				}
 
-				if (Input.GetKeyDown(KeyCode.Z))
-                {
-					if (powerCount > 0)
-                    {
-						StartCoroutine("PowerUp");
-						powerCount -= 1;
-                    }
-                }
+				if (speedSkill == false)
+				{
+					speedTime += Time.deltaTime;
+					if (speedTime >= 5)
+					{
+						speedSkill = true;
+						speedTime = 0.0f;
+					}
+				}
+
+				//if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
+				//            {
+				//	if (powerCount > 0)
+				//                {
+				//		StartCoroutine("PowerUp");
+				//		powerCount -= 1;
+				//                }
+				//            }
 
 				//Vector3.Scale(a, b); -> aとbを掛けた「三次元ベクトル」を取得できる
 				Cam_forward = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;    //「カメラの」正面
@@ -196,14 +220,28 @@ public class PlayerMove : MonoBehaviour
 					//Debug.Log("a");
 				}
 
-				if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Q))
+				if (avoidSkill == true)
 				{
-					if (avoidCount > 0)
+					if (Input.GetKeyDown("joystick button 5") || Input.GetKeyDown(KeyCode.Q))
 					{
-						audioSource.PlayOneShot(avoidVoice);
-						velocity = move_forward * walkSpeed * 100 + new Vector3(0, velocity.y, 0);
-						cCon.Move(velocity * Time.deltaTime);
-						avoidCount -= 1;
+						if (avoidCount > 0)
+						{
+							audioSource.PlayOneShot(avoidVoice);
+							velocity = move_forward * walkSpeed * 100 + new Vector3(0, velocity.y, 0);
+							cCon.Move(velocity * Time.deltaTime);
+							avoidCount -= 1;
+							avoidSkill = false;
+						}
+					}
+				}
+
+				if (avoidSkill == false)
+				{
+					avoidTime += Time.deltaTime;
+					if (avoidTime >= 5)
+					{
+						avoidSkill = true;
+						avoidTime = 0.0f;
 					}
 				}
 			}
@@ -257,16 +295,11 @@ public class PlayerMove : MonoBehaviour
 		walkSpeed = Speed;
 	}
 
-	IEnumerator PowerUp()
-	{
-		audioSource.PlayOneShot(speedUpVoice);
-		attackPower *= 5;
-		yield return new WaitForSeconds(3.0f);
-		attackPower = Power;
-	}
-
-	//public int Attack()
- //   {
-	//	return attackPower;
- //   }
+	//IEnumerator PowerUp()
+	//{
+	//	audioSource.PlayOneShot(speedUpVoice);
+	//	attackPower *= 5;
+	//	yield return new WaitForSeconds(3.0f);
+	//	attackPower = Power;
+	//}
 }

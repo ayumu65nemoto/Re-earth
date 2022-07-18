@@ -277,11 +277,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1
+  playerMove: {fileID: 0}
   waitTime: 5
   freezeTime: 0.5
   enemyStates: {fileID: 0}
   sCol: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 2c93c3d0cf56a0b4ba237ce704949c49, type: 3}
+  attackPower: 0
+  Power: 1
+  speedUpVoice: {fileID: 8300000, guid: 7972c729e4238a440b0dfc15acd8b54c, type: 3}
 --- !u!114 &1022304446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,8 +324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
-  Power: 1
-  attackPower: 1
 --- !u!114 &1022304455
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,8 @@ public class EnemyMove : MonoBehaviour
     private Vector3 direction;  //ˆÚ“®•ûŒü
     private bool arrived;   //“ž’…ƒtƒ‰ƒO
     private SetPosition setPosition;
-    private PlayerMove playerMove;
+    [SerializeField]
+    public PlayerMove playerMove;
     [SerializeField]
     private float waitTime = 5f;
     private float elapsedTime;  //Œo‰ßŽžŠÔ
@@ -41,6 +42,15 @@ public class EnemyMove : MonoBehaviour
     private AudioClip damageSound;
 
     public static int deadEnemy;
+
+    private int powerCount;
+    public int attackPower;
+    [SerializeField]
+    public int Power = 1;
+    [SerializeField]
+    private AudioClip speedUpVoice;
+    public bool attackSkill;
+    public float lapsedTime;
 
     // Start is called before the first frame update
     void Start()
@@ -59,9 +69,12 @@ public class EnemyMove : MonoBehaviour
         deadEnemy = 0;
         audioSource = GetComponent<AudioSource>();
         playerMove = GetComponent<PlayerMove>();
+        powerCount = 3;
+        attackPower = Power;
+        attackSkill = true;
+        lapsedTime = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (state == EnemyState.Walk || state == EnemyState.Chase)
@@ -88,7 +101,7 @@ public class EnemyMove : MonoBehaviour
                     animator.SetFloat("Speed", 0.0f);
                 }
             }
-            else if(state == EnemyState.Chase)
+            else if (state == EnemyState.Chase)
             {
                 if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 1.2f)
                 {
@@ -97,16 +110,16 @@ public class EnemyMove : MonoBehaviour
             }
 
         }
-        else if(state == EnemyState.Wait)
+        else if (state == EnemyState.Wait)
         {
             elapsedTime += Time.deltaTime;
 
-            if(elapsedTime > waitTime)
+            if (elapsedTime > waitTime)
             {
                 SetState(EnemyState.Walk);
             }
         }
-        else if(state == EnemyState.Freeze)
+        else if (state == EnemyState.Freeze)
         {
             elapsedTime += Time.deltaTime;
 
@@ -117,14 +130,45 @@ public class EnemyMove : MonoBehaviour
         }
         velocity.y += Physics.gravity.y * Time.deltaTime;
         cCon.Move(velocity * Time.deltaTime);
+
+        //if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    if (powerCount > 0)
+        //    {
+        //        StartCoroutine("PowerUp");
+        //        powerCount -= 1;
+        //    }
+        //}
+
+        if (attackSkill == true) 
+        {
+            if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
+            {
+                if (powerCount > 0)
+                {
+                    StartCoroutine("PowerUp");
+                    powerCount -= 1;
+                    attackSkill = false;
+                }
+            }
+        }
+
+        if (attackSkill == false)
+        {
+            lapsedTime += Time.deltaTime;
+            if (lapsedTime >= 5)
+            {
+                attackSkill = true;
+                lapsedTime = 0.0f;
+            }
+        }
     }
 
     public void TakeDamage()
     {
         //sCol.enabled = false;
         audioSource.PlayOneShot(damageSound);
-        //enemyStates.SetHp(enemyStates.GetHp() - playerMove.attackPower);
-        enemyStates.SetHp(enemyStates.GetHp() - 1);
+        enemyStates.SetHp(enemyStates.GetHp() - attackPower);
         if (enemyStates.GetHp() <= 0)
         {
             Dead();
@@ -194,5 +238,13 @@ public class EnemyMove : MonoBehaviour
     public static int GetdeadEnemy()
     {
         return deadEnemy;
+    }
+
+    IEnumerator PowerUp()
+    {
+        audioSource.PlayOneShot(speedUpVoice);
+        attackPower *= 5;
+        yield return new WaitForSeconds(3.0f);
+        attackPower = Power;
     }
 }

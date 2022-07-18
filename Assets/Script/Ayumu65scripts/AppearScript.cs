@@ -17,6 +17,7 @@ public class AppearScript : MonoBehaviour
     //@‘¼‚ÌƒLƒƒƒ‰‚Æ‚Ì‹——£
     public float radius;
     [SerializeField] GameObject Player;
+    [SerializeField] PlayerMove playerMove;
 
     private int vecX;
     private int vecZ;
@@ -62,16 +63,22 @@ public class AppearScript : MonoBehaviour
         var randomRotationY = Random.value * 360f;
 
         var enemy = Instantiate(enemys[randomValue], new Vector3(vecX, 0, vecZ), Quaternion.Euler(0f, randomRotationY, 0f));
-        var ene = enemy.GetComponent<EnemyShot>();
-        if (ene != null)
-        {
-            ene.player = Player;
-        }
+        //var ene = enemy.GetComponent<EnemyShot>();
+        //if (ene != null)
+        //{
+        //    ene.player = Player;
+        //}
 
         var ene2 = enemy.GetComponent<EnemyMove2>();
         if (ene2 != null)
         {
             ene2.player = Player;
+        }
+
+        var damage = enemy.GetComponent<Destroy_Bullet>();
+        if (damage != null)
+        {
+            //damage.playerMove = PlayerMove;
         }
 
         numberOfEnemys++;

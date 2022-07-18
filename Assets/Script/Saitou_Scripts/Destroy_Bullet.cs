@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Destroy_Bullet : MonoBehaviour
 {
+    public PlayerMove playerMove;
+
+    void Start()
+    {
+        playerMove = GetComponent<PlayerMove>();
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -15,7 +21,7 @@ public class Destroy_Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")           //ÉvÉåÉCÉÑÅ[Ç…ìñÇΩÇ¡ÇΩÇÁãÖÇ™è¡Ç¶ÇÈ
         {
             Destroy(gameObject);
-            //GetComponent<PlayerMove>().TakeDamage(transform.root);
+            //playerMove.TakeDamage(transform.root);
         }
     }
 }

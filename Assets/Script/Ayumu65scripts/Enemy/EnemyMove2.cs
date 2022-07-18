@@ -46,6 +46,15 @@ public class EnemyMove2 : MonoBehaviour
     public GameObject ball;             //敵が発射する弾オブジェクト
     public float ballSpeed = 5.0f;      //弾のスピード
 
+    private int powerCount;
+    public int attackPower;
+    [SerializeField]
+    public int Power = 1;
+    [SerializeField]
+    private AudioClip speedUpVoice;
+    public bool attackSkill;
+    public float lapsedTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +72,10 @@ public class EnemyMove2 : MonoBehaviour
         deadEnemy2 = 0;
         audioSource = GetComponent<AudioSource>();
         playerMove = GetComponent<PlayerMove>();
+        powerCount = 3;
+        attackPower = Power;
+        attackSkill = true;
+        lapsedTime = 0f;
     }
 
     // Update is called once per frame
@@ -118,13 +131,44 @@ public class EnemyMove2 : MonoBehaviour
         }
         velocity.y += Physics.gravity.y * Time.deltaTime;
         cCon.Move(velocity * Time.deltaTime);
+
+        //if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    if (powerCount > 0)
+        //    {
+        //        StartCoroutine("PowerUp");
+        //        powerCount -= 1;
+        //    }
+        //}
+
+        if (attackSkill == true)
+        {
+            if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
+            {
+                if (powerCount > 0)
+                {
+                    StartCoroutine("PowerUp");
+                    powerCount -= 1;
+                    attackSkill = false;
+                }
+            }
+        }
+
+        if (attackSkill == false)
+        {
+            lapsedTime += Time.deltaTime;
+            if (lapsedTime >= 5)
+            {
+                attackSkill = true;
+                lapsedTime = 0.0f;
+            }
+        }
     }
 
     public void TakeDamage()
     {
         audioSource.PlayOneShot(damageSound);
-        //enemyStates.SetHp(enemyStates.GetHp() - playerMove.attackPower);
-        enemyStates.SetHp(enemyStates.GetHp() - 1);
+        enemyStates.SetHp(enemyStates.GetHp() - attackPower);
         if (enemyStates.GetHp() <= 0)
         {
             Dead();
@@ -197,10 +241,11 @@ public class EnemyMove2 : MonoBehaviour
         return deadEnemy2;
     }
 
-    //public void BallShot()
-    //{
-    //    var shot = Instantiate(ball, transform.position, Quaternion.identity);
-    //    shot.GetComponent<Rigidbody>().velocity = transform.forward.normalized * ballSpeed;
-    //    /*return new WaitForSeconds(4.3f);*/                                                  //次の弾が出るまでの時間
-    //}
+    IEnumerator PowerUp()
+    {
+        //audioSource.PlayOneShot(speedUpVoice);
+        attackPower *= 5;
+        yield return new WaitForSeconds(3.0f);
+        attackPower = Power;
+    }
 }
