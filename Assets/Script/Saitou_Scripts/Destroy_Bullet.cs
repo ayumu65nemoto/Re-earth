@@ -13,15 +13,23 @@ public class Destroy_Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "WALL")              //•Ç‚É“–‚½‚Á‚½‚ç’e‚ªÁ‚¦‚é
+        if (collision.gameObject.tag == "Wall")              //•Ç‚É“–‚½‚Á‚½‚ç’e‚ªÁ‚¦‚é
         {
-            Destroy(gameObject);
+            if(gameObject){
+                Destroy(gameObject);
+            }
+            
         }
 
         if (collision.gameObject.tag == "Player")           //ƒvƒŒƒCƒ„[‚É“–‚½‚Á‚½‚ç‹…‚ªÁ‚¦‚é
         {
-            Destroy(gameObject);
+            if (gameObject)
+            {
+                Destroy(gameObject);
+            }
             collision.gameObject.GetComponent<PlayerMove>().TakeDamage(transform.root);
+            
+            
         }
     }
 }
