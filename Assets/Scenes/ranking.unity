@@ -476,7 +476,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239830925}
         m_TargetAssemblyTypeName: RankdeletetrueScript, Assembly-CSharp
-        m_MethodName: OnClickStartButton
+        m_MethodName: pushbutton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
