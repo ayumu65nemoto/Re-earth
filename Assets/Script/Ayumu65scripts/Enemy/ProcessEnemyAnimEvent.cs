@@ -34,4 +34,9 @@ public class ProcessEnemyAnimEvent : MonoBehaviour
     {
         enemyMove.SetState(EnemyMove.EnemyState.Walk);
     }
+
+    public void Dead()
+    {
+
+    }
 }

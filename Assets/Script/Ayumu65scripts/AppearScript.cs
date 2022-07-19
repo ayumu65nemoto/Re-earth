@@ -11,17 +11,21 @@ public class AppearScript : MonoBehaviour
     //　この場所から出現する敵の数
     [SerializeField] int maxNumOfEnemys;
     //　今何人の敵を出現させたか（総数）
-    private int numberOfEnemys;
+    public int numberOfEnemys;
     //　待ち時間計測フィールド
     private float elapsedTime;
     //　他のキャラとの距離
     public float radius;
     [SerializeField] GameObject Player;
-    [SerializeField] PlayerMove playerMove;
+    [SerializeField] public PlayerMove playerMove;
+    [SerializeField] public AppearScript appearScript;
 
     private int vecX;
     private int vecZ;
     private int fieldSize = 25;
+
+    public int deadCount;
+    public int deadCount2;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +55,7 @@ public class AppearScript : MonoBehaviour
     }
 
     //敵出現メソッド
-    void AppearEnemy()
+    public void AppearEnemy()
     {
         vecX = Random.Range(-fieldSize, fieldSize);
         vecZ = Random.Range(-fieldSize, fieldSize);
@@ -63,22 +67,23 @@ public class AppearScript : MonoBehaviour
         var randomRotationY = Random.value * 360f;
 
         var enemy = Instantiate(enemys[randomValue], new Vector3(vecX, 0, vecZ), Quaternion.Euler(0f, randomRotationY, 0f));
-        //var ene = enemy.GetComponent<EnemyShot>();
-        //if (ene != null)
-        //{
-        //    ene.player = Player;
-        //}
 
-        var ene2 = enemy.GetComponent<EnemyMove2>();
-        if (ene2 != null)
+        var ene = enemy.GetComponent<EnemyMove2>();
+        if (ene != null)
         {
-            ene2.player = Player;
+            ene.player = Player;
         }
 
-        var damage = enemy.GetComponent<Destroy_Bullet>();
-        if (damage != null)
+        var ene2 = enemy.GetComponent<EnemyMove>();
+        if (ene2 != null)
         {
-            //damage.playerMove = PlayerMove;
+            ene2.appearScript = appearScript;
+        }
+
+        var ene3 = enemy.GetComponent<EnemyMove2>();
+        if (ene3 != null)
+        {
+            ene3.appearScript = appearScript;
         }
 
         numberOfEnemys++;

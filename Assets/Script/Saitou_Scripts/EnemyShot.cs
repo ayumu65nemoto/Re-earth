@@ -6,7 +6,7 @@ public class EnemyShot : MonoBehaviour
 {
     public GameObject player;           //プレイヤー
     public GameObject ball;             //敵が発射する弾オブジェクト
-    public float ballSpeed = 5.0f;      //弾のスピード
+    public float ballSpeed = 8.0f;      //弾のスピード
 
     void Start()
     {

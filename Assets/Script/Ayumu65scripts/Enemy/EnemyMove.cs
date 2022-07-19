@@ -52,6 +52,9 @@ public class EnemyMove : MonoBehaviour
     public bool attackSkill;
     public float lapsedTime;
 
+    public AppearScript appearScript;
+    public int deadCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -176,9 +179,11 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void Dead()
+    public void Dead()
     {
         SetState(EnemyState.Dead);
+        appearScript.AppearEnemy();
+        appearScript.deadCount += 1;
     }
 
     public void SetState(EnemyState tempState, Transform targetObj = null)

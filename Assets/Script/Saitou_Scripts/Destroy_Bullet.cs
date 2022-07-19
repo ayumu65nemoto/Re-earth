@@ -8,7 +8,7 @@ public class Destroy_Bullet : MonoBehaviour
 
     void Start()
     {
-        playerMove = GetComponent<PlayerMove>();
+        //playerMove = GetComponent<PlayerMove>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -21,7 +21,7 @@ public class Destroy_Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")           //ÉvÉåÉCÉÑÅ[Ç…ìñÇΩÇ¡ÇΩÇÁãÖÇ™è¡Ç¶ÇÈ
         {
             Destroy(gameObject);
-            //playerMove.TakeDamage(transform.root);
+            collision.gameObject.GetComponent<PlayerMove>().TakeDamage(transform.root);
         }
     }
 }
