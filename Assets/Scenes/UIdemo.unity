@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -1888,10 +1888,13 @@ MonoBehaviour:
   countTime: 5
   democount: {fileID: 657902304}
   demo1: 5
+  demoskill1: 0
+  demoskill2: 0
   UIobj2: {fileID: 416161977}
   countTime2: 5
   democount2: {fileID: 1696904709}
   demo2: 5
+  skillTime1: 5
 --- !u!114 &2019633382
 MonoBehaviour:
   m_ObjectHideFlags: 0

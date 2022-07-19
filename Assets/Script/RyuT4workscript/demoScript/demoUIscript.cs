@@ -10,27 +10,54 @@ public class demoUIscript : MonoBehaviour
     public float countTime = 5.0f;
     public Text democount;
     public int demo1 = 5;
+    public bool demoskill1;
+    public bool demoskill2;
 
     public Image UIobj2;
     public float countTime2 = 5.0f;
     public Text democount2;
     public int demo2 = 5;
+    public float skillTime1;
+
+
+    private void Start()
+    {
+        demoskill1 = true;
+        skillTime1 = 0.0f;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(demo1 > 0)
+        if (demoskill1 == true)
         {
-
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (demo1 > 0)
             {
-                demo1 -= 1;
-                UIobj.fillAmount += 1;
-                democount.text = string.Format("{0}", demo1);
+
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    demo1 -= 1;
+                    UIobj.fillAmount += 1;
+                    democount.text = string.Format("{0}", demo1);
+                    demoskill1 = false;
+                }
+
             }
+
+        }
+
+        if(demoskill1 == false)
+        {
+            skillTime1 += Time.deltaTime;
+            if(skillTime1 >= 5)
+            {
+                demoskill1 = true;
+                skillTime1 = 0.0f;
+            }
+
             if (roop)
             {
-                UIobj.fillAmount -= 4.0f / countTime * Time.deltaTime;
+                UIobj.fillAmount -= 1.0f / countTime * Time.deltaTime;
             }
         }
 
