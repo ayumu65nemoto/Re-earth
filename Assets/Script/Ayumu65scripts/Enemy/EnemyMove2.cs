@@ -57,6 +57,7 @@ public class EnemyMove2 : MonoBehaviour
 
     public AppearScript appearScript;
     public int deadCount2;
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +80,7 @@ public class EnemyMove2 : MonoBehaviour
         attackPower = Power;
         attackSkill = true;
         lapsedTime = 0f;
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -172,7 +174,7 @@ public class EnemyMove2 : MonoBehaviour
     {
         audioSource.PlayOneShot(damageSound);
         enemyStates.SetHp(enemyStates.GetHp() - attackPower);
-        if (enemyStates.GetHp() <= 0)
+        if (enemyStates.GetHp() == 0 && isDead == false)
         {
             Dead();
             deadEnemy2 += 50;
@@ -181,9 +183,13 @@ public class EnemyMove2 : MonoBehaviour
 
     public void Dead()
     {
-        SetState(EnemyState.Dead);
-        appearScript.AppearEnemy();
-        appearScript.deadCount2 += 1;
+        if (isDead == false)
+        {
+            SetState(EnemyState.Dead);
+            appearScript.AppearEnemy();
+            appearScript.deadCount2 += 1;
+            isDead = true;
+        }
     }
 
     public void SetState(EnemyState tempState, Transform targetObj = null)

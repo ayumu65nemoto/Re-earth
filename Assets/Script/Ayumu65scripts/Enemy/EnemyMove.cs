@@ -54,6 +54,7 @@ public class EnemyMove : MonoBehaviour
 
     public AppearScript appearScript;
     public int deadCount;
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +77,7 @@ public class EnemyMove : MonoBehaviour
         attackPower = Power;
         attackSkill = true;
         lapsedTime = 0f;
+        isDead = false;
     }
 
     void Update()
@@ -172,18 +174,33 @@ public class EnemyMove : MonoBehaviour
         //sCol.enabled = false;
         audioSource.PlayOneShot(damageSound);
         enemyStates.SetHp(enemyStates.GetHp() - attackPower);
-        if (enemyStates.GetHp() <= 0)
+        if (enemyStates.GetHp() == 0 && isDead == false)
         {
             Dead();
             deadEnemy += 50;
         }
     }
 
+    //こっちだとうまくいかないのはなぜ
+    //二重チェックだとうまくいく
+    //public void Dead()
+    //{
+    //    SetState(EnemyState.Dead);
+    //    appearScript.AppearEnemy();
+    //    appearScript.deadCount += 1;
+    //    isDead = true;
+    //    Debug.Log("a " + isDead);
+    //}
+
     public void Dead()
     {
-        SetState(EnemyState.Dead);
-        appearScript.AppearEnemy();
-        appearScript.deadCount += 1;
+        if (isDead == false)
+        {
+            SetState(EnemyState.Dead);
+            appearScript.AppearEnemy();
+            appearScript.deadCount += 1;
+            isDead = true;
+        }
     }
 
     public void SetState(EnemyState tempState, Transform targetObj = null)

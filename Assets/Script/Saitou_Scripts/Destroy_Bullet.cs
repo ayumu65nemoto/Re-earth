@@ -13,7 +13,7 @@ public class Destroy_Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Wall")              //•Ç‚É“–‚½‚Á‚½‚ç’e‚ªÁ‚¦‚é
+        if (collision.gameObject.tag == "WALL")              //•Ç‚É“–‚½‚Á‚½‚ç’e‚ªÁ‚¦‚é
         {
             Destroy(gameObject);
         }
