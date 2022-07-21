@@ -280,9 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be33f438c23911f44a784bc6d5692f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1
+  walkSpeed: 3
   waitTime: 5
-  freezeTime: 0.5
+  freezeTime: 1
   enemyStates: {fileID: 0}
   sCol: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 2c93c3d0cf56a0b4ba237ce704949c49, type: 3}
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e29dcd71899a9646a2f666a34cca11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 2
 --- !u!114 &912282720
 MonoBehaviour:
   m_ObjectHideFlags: 0

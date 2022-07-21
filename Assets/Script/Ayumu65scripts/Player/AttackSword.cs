@@ -21,7 +21,7 @@ public class AttackSword : MonoBehaviour
 
         if (col.tag == "Boss")
         {
-            col.GetComponent<BossMove>().SetState(BossMove.EnemyState.Damage);
+            //col.GetComponent<BossMove>().SetState(BossMove.EnemyState.Damage);
             col.GetComponent<BossMove>().TakeDamage();
         }
     }

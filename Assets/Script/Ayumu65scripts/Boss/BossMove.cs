@@ -97,7 +97,7 @@ public class BossMove : MonoBehaviour
 
             if (state == EnemyState.Walk)
             {
-                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 0.7f)
+                if (Vector3.Distance(transform.position, setPosition.GetDestination()) < 0.9f)
                 {
                     SetState(EnemyState.Wait);
                     animator.SetFloat("Speed", 0.0f);
@@ -218,12 +218,12 @@ public class BossMove : MonoBehaviour
             animator.SetFloat("Speed", 0f);
             animator.SetBool("Attack", false);
         }
-        else if (tempState == EnemyState.Damage)
-        {
-            velocity = Vector3.zero;
-            animator.SetBool("Attack", false);
-            //animator.SetTrigger("Damage");
-        }
+        //else if (tempState == EnemyState.Damage)
+        //{
+        //    velocity = Vector3.zero;
+        //    animator.SetBool("Attack", false);
+        //    //animator.SetTrigger("Damage");
+        //}
         else if (tempState == EnemyState.Dead)
         {
             animator.SetTrigger("Dead");
@@ -250,8 +250,8 @@ public class BossMove : MonoBehaviour
     IEnumerator PowerUp()
     {
         //audioSource.PlayOneShot(speedUpVoice);
-        attackPower *= 5;
-        yield return new WaitForSeconds(3.0f);
+        attackPower *= 2;
+        yield return new WaitForSeconds(5.0f);
         attackPower = Power;
     }
 }

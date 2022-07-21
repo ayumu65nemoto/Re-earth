@@ -56,12 +56,12 @@ public class PlayerStatus : MonoBehaviour
     //ダメージ
     public void Damage()
     {   //現在値から－10
-        currentHp -= 5;
+        currentHp -= 3;
     }
 
     //ボスダメージ
     public void BossDamage()
     {
-        currentHp -= 10;
+        currentHp -= 7;
     }
 }

@@ -276,16 +276,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd620a3ad7f802489b79c213296fcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1
+  walkSpeed: 3
   playerMove: {fileID: 0}
   waitTime: 5
-  freezeTime: 0.5
+  freezeTime: 1
   enemyStates: {fileID: 0}
   sCol: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 2c93c3d0cf56a0b4ba237ce704949c49, type: 3}
   attackPower: 0
   Power: 1
   speedUpVoice: {fileID: 8300000, guid: 7972c729e4238a440b0dfc15acd8b54c, type: 3}
+  attackSkill: 0
+  lapsedTime: 0
+  appearScript: {fileID: 0}
+  deadCount: 0
+  isDead: 0
 --- !u!114 &1022304446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e29dcd71899a9646a2f666a34cca11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 2
 --- !u!114 &1022304455
 MonoBehaviour:
   m_ObjectHideFlags: 0

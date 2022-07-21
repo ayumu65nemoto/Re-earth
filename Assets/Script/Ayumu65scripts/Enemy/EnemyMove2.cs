@@ -255,8 +255,8 @@ public class EnemyMove2 : MonoBehaviour
     IEnumerator PowerUp()
     {
         //audioSource.PlayOneShot(speedUpVoice);
-        attackPower *= 5;
-        yield return new WaitForSeconds(3.0f);
+        attackPower *= 2;
+        yield return new WaitForSeconds(5.0f);
         attackPower = Power;
     }
 }

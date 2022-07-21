@@ -227,7 +227,7 @@ public class PlayerMove : MonoBehaviour
 						if (avoidCount > 0)
 						{
 							audioSource.PlayOneShot(avoidVoice);
-							velocity = move_forward * walkSpeed * 100 + new Vector3(0, velocity.y, 0);
+							velocity = move_forward * walkSpeed * 50 + new Vector3(0, velocity.y, 0);
 							cCon.Move(velocity * Time.deltaTime);
 							avoidCount -= 1;
 							avoidSkill = false;
@@ -290,8 +290,8 @@ public class PlayerMove : MonoBehaviour
 	IEnumerator SpeedUp()
 	{
 		audioSource.PlayOneShot(speedUpVoice);
-		walkSpeed *= 5.0f;
-		yield return new WaitForSeconds(3.0f);
+		walkSpeed *= 1.5f;
+		yield return new WaitForSeconds(5.0f);
 		walkSpeed = Speed;
 	}
 
