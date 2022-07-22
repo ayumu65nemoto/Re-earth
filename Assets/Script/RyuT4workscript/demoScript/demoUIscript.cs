@@ -18,12 +18,23 @@ public class demoUIscript : MonoBehaviour
     public Text democount2;
     public int demo2 = 5;
     public float skillTime1;
+    public float skillTime2;
 
+    public Image UIobj3;
+    public float countTime3 = 5.0f;
+    public Text democount3;
+    public int demo3 = 5;
+    public bool demoskill3;
+    public float skillTime3;
 
     private void Start()
     {
         demoskill1 = true;
+        demoskill2 = true;
+        demoskill3 = true;
         skillTime1 = 0.0f;
+        skillTime2 = 0.0f;
+        skillTime3 = 0.0f;
     }
 
     // Update is called once per frame
@@ -61,21 +72,69 @@ public class demoUIscript : MonoBehaviour
             }
         }
 
-        if (demo2 > 0)
+        if (demoskill2 == true)
         {
-
-            if (Input.GetKeyDown(KeyCode.E))
+            if (demo2 > 0)
             {
-                demo2 -= 1;
-                UIobj2.fillAmount += 1;
-                democount2.text = string.Format("{0}", demo2);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    demo2 -= 1;
+                    UIobj2.fillAmount += 1;
+                    democount2.text = string.Format("{0}", demo2);
+                    demoskill2 = false;
+                }
+
             }
+
+        }
+
+        if (demoskill2 == false)
+        {
+            skillTime2 += Time.deltaTime;
+            if (skillTime2 >= 5)
+            {
+                demoskill2 = true;
+                skillTime2 = 0.0f;
+            }
+
             if (roop)
             {
-                UIobj2.fillAmount -= 4.0f / countTime2 * Time.deltaTime;
+                UIobj2.fillAmount -= 1.0f / countTime2 * Time.deltaTime;
             }
         }
 
+        if (demoskill3 == true)
+        {
+            if (demo3 > 0)
+            {
+
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    demo3 -= 1;
+                    UIobj3.fillAmount += 1;
+                    democount3.text = string.Format("{0}", demo3);
+                    demoskill3 = false;
+                }
+
+            }
+
+        }
+
+        if (demoskill3 == false)
+        {
+            skillTime3 += Time.deltaTime;
+            if (skillTime3 >= 5)
+            {
+                demoskill3 = true;
+                skillTime3 = 0.0f;
+            }
+
+            if (roop)
+            {
+                UIobj3.fillAmount -= 1.0f / countTime3 * Time.deltaTime;
+            }
+        }
     }
 
 }
