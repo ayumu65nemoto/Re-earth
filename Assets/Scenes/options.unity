@@ -568,10 +568,10 @@ MonoBehaviour:
   Panel1: {fileID: 1229229640}
   Panel2: {fileID: 614797886}
   Panel3: {fileID: 276324525}
-  select1: {fileID: 0}
+  select1: {fileID: 1863072411}
   select2: {fileID: 308007378}
-  select3: {fileID: 0}
-  FirstSelectButton: {fileID: 0}
+  select3: {fileID: 1182961348}
+  FirstSelectButton: {fileID: 1182961348}
 --- !u!114 &308007378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baf526a6bc195f42b18a59c6e7dadcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstSelectButton: {fileID: 0}
+  FirstSelectButton: {fileID: 1182961348}
 --- !u!114 &988975971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,8 +1297,8 @@ MonoBehaviour:
   Panel1: {fileID: 1229229640}
   Panel2: {fileID: 614797886}
   Panel3: {fileID: 276324525}
-  select1: {fileID: 0}
-  select2: {fileID: 0}
+  select1: {fileID: 1863072411}
+  select2: {fileID: 308007378}
   select3: {fileID: 1182961348}
   FirstSelectButton: {fileID: 1182961348}
 --- !u!114 &1182961348
@@ -1581,7 +1581,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1683895659}
-  - component: {fileID: 1683895658}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1589,25 +1588,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1683895658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683895657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e77b19d2ca74744888b4585c70efa34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel1: {fileID: 1229229640}
-  Panel2: {fileID: 614797886}
-  Panel3: {fileID: 276324525}
-  select1: {fileID: 1863072411}
-  select2: {fileID: 0}
-  select3: {fileID: 0}
-  FirstSelectButton: {fileID: 0}
 --- !u!4 &1683895659
 Transform:
   m_ObjectHideFlags: 0
@@ -1948,9 +1928,9 @@ MonoBehaviour:
   Panel2: {fileID: 614797886}
   Panel3: {fileID: 276324525}
   select1: {fileID: 1863072411}
-  select2: {fileID: 0}
-  select3: {fileID: 0}
-  FirstSelectButton: {fileID: 0}
+  select2: {fileID: 308007378}
+  select3: {fileID: 1182961348}
+  FirstSelectButton: {fileID: 1182961348}
 --- !u!1 &1922745721
 GameObject:
   m_ObjectHideFlags: 0
