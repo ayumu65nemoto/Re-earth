@@ -148,7 +148,7 @@ public class EnemyMove2 : MonoBehaviour
 
         if (attackSkill == true)
         {
-            if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.C))
             {
                 if (powerCount > 0)
                 {
@@ -237,7 +237,7 @@ public class EnemyMove2 : MonoBehaviour
         else if (tempState == EnemyState.Dead)
         {
             animator.SetTrigger("Dead");
-            Destroy(this.gameObject, 3f);
+            Destroy(this.gameObject, 1f);
             velocity = Vector3.zero;
         }
     }
