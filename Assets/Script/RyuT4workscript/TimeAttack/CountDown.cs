@@ -30,6 +30,7 @@ public class CountDown : MonoBehaviour
     public int deadcount2;
     public int CLEAR;
     public int deadcountBoss;
+    public bool returnkey;
 
 
     private void OnCollisionEnter(Collision collision)
@@ -45,6 +46,7 @@ public class CountDown : MonoBehaviour
         deadcount = 0;
         mathscore = 0;
         mathscore = 30000;
+        returnkey = false;
         //ç≈ëÂHPÇê›íË
         maxHp = 100;
         //åªç›ílÇç≈ëÂÇ…
@@ -158,9 +160,19 @@ public class CountDown : MonoBehaviour
             {
                 Panel1.SetActive(false);
                 Panel2.SetActive(true);
+                returnkey = true;
             }
 
             if (Input.GetKeyDown(KeyCode.R))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("ranking");
+            }
+        }
+
+        if(returnkey == true)
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
             {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("ranking");

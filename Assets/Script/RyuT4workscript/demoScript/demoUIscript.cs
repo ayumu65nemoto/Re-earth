@@ -9,21 +9,21 @@ public class demoUIscript : MonoBehaviour
     public bool roop;
     public float countTime = 5.0f;
     public Text democount;
-    public int demo1 = 5;
+    public int demo1 = 5;  //スキル回数
     public bool demoskill1;
     public bool demoskill2;
 
     public Image UIobj2;
     public float countTime2 = 5.0f;
     public Text democount2;
-    public int demo2 = 5;
+    public int demo2 = 5;  //スキル回数
     public float skillTime1;
     public float skillTime2;
 
     public Image UIobj3;
     public float countTime3 = 5.0f;
     public Text democount3;
-    public int demo3 = 5;
+    public int demo3 = 5;  //スキル回数
     public bool demoskill3;
     public float skillTime3;
 
