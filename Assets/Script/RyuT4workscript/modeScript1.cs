@@ -15,6 +15,7 @@ public class modeScript1 : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         counter = false;
         startkey = false;
         counttime = 3f;
