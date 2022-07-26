@@ -92,8 +92,8 @@ public class PlayerMove : MonoBehaviour
         velocity = Vector3.zero;
 		avoidCount = 5;
 		attackCount = 0;
-		speedCount = 3;
-		powerCount = 3;
+		speedCount = 5;
+		powerCount = 5;
 		walkSpeed = Speed;
 		audioSource = GetComponent<AudioSource>();
 		attackPower = Power;

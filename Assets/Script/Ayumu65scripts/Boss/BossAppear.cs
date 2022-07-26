@@ -18,7 +18,7 @@ public class BossAppear : MonoBehaviour
     void Update()
     {
         var deadCounts = appearScript.deadCount + appearScript.deadCount2;
-        if (deadCounts == 20)
+        if (deadCounts == 10)
         {
             boss.SetActive(true);
         }
