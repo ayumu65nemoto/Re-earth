@@ -7,7 +7,7 @@ public class BallColor2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Renderer>().material.color = Color.gray;
+        GetComponent<Renderer>().material.color = new Color32(0, 255, 150, 1);
     }
 
     // Update is called once per frame
