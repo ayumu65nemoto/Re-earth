@@ -64,4 +64,10 @@ public class PlayerStatus : MonoBehaviour
     {
         currentHp -= 7;
     }
+
+    //‰ñ•œ
+    public void Heal()
+    {
+        currentHp += 2;
+    }
 }

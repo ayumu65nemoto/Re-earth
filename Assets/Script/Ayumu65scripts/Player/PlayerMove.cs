@@ -287,6 +287,11 @@ public class PlayerMove : MonoBehaviour
 		GetComponent<PlayerStatus>().BossDamage();
 	}
 
+	public void TakeHeal()
+    {
+		GetComponent<PlayerStatus>().Heal();
+    }
+
 	IEnumerator SpeedUp()
 	{
 		audioSource.PlayOneShot(speedUpVoice);
