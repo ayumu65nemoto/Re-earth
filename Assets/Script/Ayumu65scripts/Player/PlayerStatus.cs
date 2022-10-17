@@ -11,6 +11,8 @@ public class PlayerStatus : MonoBehaviour
 
     public int currentHp;
     public int maxHp;
+    const int MIN = 0;
+    const int MAX = 100;
 
     public Slider hpBar;
     public Text hpText;
@@ -57,17 +59,29 @@ public class PlayerStatus : MonoBehaviour
     public void Damage()
     {   //現在値から－10
         currentHp -= 3;
+        // 最大値を超えたら最大値を渡す
+        currentHp = System.Math.Min(currentHp, MAX);
+        // 最小値を下回ったら最小値を渡す
+        currentHp = System.Math.Max(currentHp, MIN);
     }
 
     //ボスダメージ
     public void BossDamage()
     {
         currentHp -= 7;
+        // 最大値を超えたら最大値を渡す
+        currentHp = System.Math.Min(currentHp, MAX);
+        // 最小値を下回ったら最小値を渡す
+        currentHp = System.Math.Max(currentHp, MIN);
     }
 
     //回復
     public void Heal()
     {
         currentHp += 2;
+        // 最大値を超えたら最大値を渡す
+        currentHp = System.Math.Min(currentHp, MAX);
+        // 最小値を下回ったら最小値を渡す
+        currentHp = System.Math.Max(currentHp, MIN);
     }
 }
