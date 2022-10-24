@@ -292,6 +292,6 @@ public class EnemyMove : MonoBehaviour
         //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
         hit_effect.transform.position = gameObject.transform.position;
         //エフェクトを消す
-        Destroy(hit_effect, 1.0f);
+        Destroy(hit_effect, 1.5f);
     }
 }

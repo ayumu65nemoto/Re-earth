@@ -52,6 +52,9 @@ public class BossMove : MonoBehaviour
     public bool attackSkill;
     public float lapsedTime;
 
+    public GameObject deadEffect;
+    public GameObject hitEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -170,6 +173,7 @@ public class BossMove : MonoBehaviour
     {
         audioSource.PlayOneShot(damageSound);
         enemyStates.SetHp(enemyStates.GetHp() - attackPower);
+        GenerateHitEffect();
         if (enemyStates.GetHp() <= 0)
         {
             Dead();
@@ -181,6 +185,7 @@ public class BossMove : MonoBehaviour
     void Dead()
     {
         SetState(EnemyState.Dead);
+        GenerateDeadEffect();
     }
 
     public void SetState(EnemyState tempState, Transform targetObj = null)
@@ -253,5 +258,25 @@ public class BossMove : MonoBehaviour
         attackPower *= 2;
         yield return new WaitForSeconds(5.0f);
         attackPower = Power;
+    }
+
+    void GenerateDeadEffect()
+    {
+        //エフェクトを生成する
+        GameObject dead_effect = Instantiate(deadEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        dead_effect.transform.position = gameObject.transform.position;
+        //エフェクトを消す
+        Destroy(dead_effect, 2.0f);
+    }
+
+    void GenerateHitEffect()
+    {
+        //エフェクトを生成する
+        GameObject hit_effect = Instantiate(hitEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        hit_effect.transform.position = gameObject.transform.position;
+        //エフェクトを消す
+        Destroy(hit_effect, 1.5f);
     }
 }
