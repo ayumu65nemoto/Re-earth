@@ -16,13 +16,13 @@ public class ProcessEnemyAnimEvent : MonoBehaviour
     void AttackStart()
     {
         sCol.enabled = true;
-        //Debug.Log("S");
+        Debug.Log("S");
     }
 
     public void AttackEnd()
     {
         sCol.enabled = false;
-        //Debug.Log("E");
+        Debug.Log("E");
     }
 
     public void StateEnd()
