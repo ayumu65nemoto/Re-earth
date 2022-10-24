@@ -12,6 +12,21 @@ public class CanvasSelectScript : MonoBehaviour
     public GameObject Panel4;
     public GameObject Panel5;
     public GameObject Panel6;
+    public GameObject Panel7;
+    public GameObject Panel8;
+    public GameObject Panel9;
+    public GameObject Panel10;
+    public GameObject Panel11;
+    public GameObject Panel12;
+    public GameObject Panel13;
+    public GameObject Panel14;
+    public GameObject Panel15;
+    public GameObject Panel16;
+    public GameObject Panel17;
+    public GameObject Panel18;
+    public GameObject Panel19;
+    public GameObject Panel20;
+    public GameObject Panel21;
     public Button select1;
     public Button select2;
     public Button FirstSelectButton;
@@ -29,6 +44,21 @@ public class CanvasSelectScript : MonoBehaviour
         Panel4.SetActive(false);
         Panel5.SetActive(false);
         Panel6.SetActive(false);
+        Panel7.SetActive(false);
+        Panel8.SetActive(false);
+        Panel9.SetActive(false);
+        Panel10.SetActive(false);
+        Panel11.SetActive(false);
+        Panel12.SetActive(false);
+        Panel13.SetActive(false);
+        Panel14.SetActive(false);
+        Panel15.SetActive(false);
+        Panel16.SetActive(false);
+        Panel17.SetActive(false);
+        Panel18.SetActive(false);
+        Panel19.SetActive(false);
+        Panel20.SetActive(false);
+        Panel21.SetActive(false);
         FirstSelectButton.Select();
         changekey = 0;
         key = 0;
@@ -54,10 +84,10 @@ public class CanvasSelectScript : MonoBehaviour
 
         if (changekey == -1)
         {
-            changekey = 6;
+            changekey = 21;
         }
 
-        if (changekey == 7)
+        if (changekey == 22)
         {
             changekey = 0;
         }
@@ -66,7 +96,7 @@ public class CanvasSelectScript : MonoBehaviour
         {
             Panel0.SetActive(true);
             Panel1.SetActive(false);
-            Panel6.SetActive(false);
+            Panel21.SetActive(false);
         }
 
         if (changekey == 1)
@@ -106,9 +136,114 @@ public class CanvasSelectScript : MonoBehaviour
 
         if (changekey == 6)
         {
-            Panel0.SetActive(false);
             Panel5.SetActive(false);
             Panel6.SetActive(true);
+            Panel7.SetActive(false);
+        }
+
+        if (changekey == 7)
+        {
+            Panel6.SetActive(false);
+            Panel7.SetActive(true);
+            Panel8.SetActive(false);
+        }
+
+        if (changekey == 8)
+        {
+            Panel7.SetActive(false);
+            Panel8.SetActive(true);
+            Panel9.SetActive(false);
+        }
+
+        if (changekey == 9)
+        {
+            Panel8.SetActive(false);
+            Panel9.SetActive(true);
+            Panel10.SetActive(false);
+        }
+
+        if (changekey == 10)
+        {
+            Panel9.SetActive(false);
+            Panel10.SetActive(true);
+            Panel11.SetActive(false);
+        }
+
+        if (changekey == 11)
+        {
+            Panel10.SetActive(false);
+            Panel11.SetActive(true);
+            Panel12.SetActive(false);
+        }
+
+        if (changekey == 12)
+        {
+            Panel11.SetActive(false);
+            Panel12.SetActive(true);
+            Panel13.SetActive(false);
+        }
+
+        if (changekey == 13)
+        {
+            Panel12.SetActive(false);
+            Panel13.SetActive(true);
+            Panel14.SetActive(false);
+        }
+
+        if (changekey == 14)
+        {
+            Panel13.SetActive(false);
+            Panel14.SetActive(true);
+            Panel15.SetActive(false);
+        }
+
+        if (changekey == 15)
+        {
+            Panel14.SetActive(false);
+            Panel15.SetActive(true);
+            Panel16.SetActive(false);
+        }
+
+        if (changekey == 16)
+        {
+            Panel15.SetActive(false);
+            Panel16.SetActive(true);
+            Panel17.SetActive(false);
+        }
+
+        if (changekey == 17)
+        {
+            Panel16.SetActive(false);
+            Panel17.SetActive(true);
+            Panel18.SetActive(false);
+        }
+
+        if (changekey == 18)
+        {
+            Panel17.SetActive(false);
+            Panel18.SetActive(true);
+            Panel19.SetActive(false);
+        }
+
+        if (changekey == 19)
+        {
+            Panel18.SetActive(false);
+            Panel19.SetActive(true);
+            Panel20.SetActive(false);
+        }
+
+        if (changekey == 20)
+        {
+            Panel19.SetActive(false);
+            Panel20.SetActive(true);
+            Panel21.SetActive(false);
+        }
+
+        if (changekey == 21)
+        {
+            Panel20.SetActive(false);
+            Panel21.SetActive(true);
+            Panel0.SetActive(false);
         }
 
     }
