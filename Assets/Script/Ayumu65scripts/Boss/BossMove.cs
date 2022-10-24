@@ -33,7 +33,7 @@ public class BossMove : MonoBehaviour
     [SerializeField]
     private float freezeTime = 0.5f;    //ÉtÉäÅ[ÉYéûä‘
     [SerializeField]
-    private EnemyStates enemyStates;
+    private BossStatus bossStatus;
     [SerializeField]
     private SphereCollider sCol;
     private AudioSource audioSource;
@@ -63,7 +63,7 @@ public class BossMove : MonoBehaviour
         cCon = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
-        enemyStates = GetComponent<EnemyStates>();
+        bossStatus = GetComponent<BossStatus>();
         sCol = GetComponent<SphereCollider>();
         setPosition.CreateRandomPosition();
         destination = setPosition.GetDestination();
@@ -172,9 +172,9 @@ public class BossMove : MonoBehaviour
     public void TakeDamage()
     {
         audioSource.PlayOneShot(damageSound);
-        enemyStates.SetHp(enemyStates.GetHp() - attackPower);
+        bossStatus.SetHp(bossStatus.GetHp() - attackPower);
         GenerateHitEffect();
-        if (enemyStates.GetHp() <= 0)
+        if (bossStatus.GetHp() <= 0)
         {
             Dead();
             deadEnemyBoss += 1000;
