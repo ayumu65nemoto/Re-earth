@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour
         //float scrollLog += Input.GetAxis("Mouse ScrollWheel");
         float view = cam.fieldOfView - scroll * 10;
 
-        cam.fieldOfView = Mathf.Clamp(value: view, min: 0.1f, max: 179.9f);
+        cam.fieldOfView = Mathf.Clamp(value: view, min: 0.1f, max: 100.0f);
 
         //Cameraの位置、Z軸にスクロール分を加える
         //transform.localPosition
