@@ -198,7 +198,7 @@ public class EnemyMoveTutorial : MonoBehaviour
         if (isDead == false)
         {
             SetState(EnemyState.Dead);
-            deadCount += 1;
+            //deadCount += 1;
             isDead = true;
         }
     }

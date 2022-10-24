@@ -291,6 +291,8 @@ MonoBehaviour:
   appearScript: {fileID: 0}
   deadCount: 0
   isDead: 0
+  deadEffect: {fileID: 830584676073327055, guid: 9210ecedec1f5bf4d841abdbdf5b98ff, type: 3}
+  hitEffect: {fileID: 3594614783828189054, guid: 30c94c59771636646991b7bfa32236c0, type: 3}
 --- !u!114 &1022304446
 MonoBehaviour:
   m_ObjectHideFlags: 0

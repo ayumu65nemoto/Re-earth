@@ -56,6 +56,9 @@ public class EnemyMove : MonoBehaviour
     public int deadCount;
     public bool isDead;
 
+    public GameObject deadEffect;
+    public GameObject hitEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -174,6 +177,7 @@ public class EnemyMove : MonoBehaviour
         //sCol.enabled = false;
         audioSource.PlayOneShot(damageSound);
         enemyStates.SetHp(enemyStates.GetHp() - attackPower);
+        GenerateHitEffect();
         if (enemyStates.GetHp() == 0 && isDead == false)
         {
             Dead();
@@ -200,6 +204,7 @@ public class EnemyMove : MonoBehaviour
             appearScript.AppearEnemy();
             appearScript.deadCount += 1;
             isDead = true;
+            GenerateDeadEffect();
         }
     }
 
@@ -268,5 +273,25 @@ public class EnemyMove : MonoBehaviour
         attackPower *= 2;
         yield return new WaitForSeconds(5.0f);
         attackPower = Power;
+    }
+
+    void GenerateDeadEffect()
+    {
+        //エフェクトを生成する
+        GameObject dead_effect = Instantiate(deadEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        dead_effect.transform.position = gameObject.transform.position;
+        //エフェクトを消す
+        Destroy(dead_effect, 2.0f);
+    }
+
+    void GenerateHitEffect()
+    {
+        //エフェクトを生成する
+        GameObject hit_effect = Instantiate(hitEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        hit_effect.transform.position = gameObject.transform.position;
+        //エフェクトを消す
+        Destroy(hit_effect, 1.0f);
     }
 }
