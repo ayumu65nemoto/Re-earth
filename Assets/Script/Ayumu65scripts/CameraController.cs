@@ -13,9 +13,13 @@ public class CameraController : MonoBehaviour
     private float x = 0.0f;
     private float y = 0.0f;
 
+    private Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
+        cam = GetComponent<Camera>();
+
         var angles = transform.eulerAngles;     //このゲームオブジェクト（カメラ）の角度
         x = angles.y;   //「y」の値を取得（代入）
         y = angles.x;
@@ -38,6 +42,19 @@ public class CameraController : MonoBehaviour
             transform.rotation = rotation;
             transform.position = position;
         }
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        //マウススクロールの値は動かさないと0になるのでここで保存する
+        //float scrollLog += Input.GetAxis("Mouse ScrollWheel");
+        float view = cam.fieldOfView - scroll * 10;
+
+        cam.fieldOfView = Mathf.Clamp(value: view, min: 0.1f, max: 179.9f);
+
+        //Cameraの位置、Z軸にスクロール分を加える
+        //transform.localPosition
+        //    = new Vector3(transform.localPosition.x,
+        //    transform.localPosition.y,
+        //    transform.localPosition.z + scrollLog);
     }
 
     static float ClampAngle(float angle, float min, float max)
