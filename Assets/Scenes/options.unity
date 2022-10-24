@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 170569212}
   - component: {fileID: 170569211}
   m_Layer: 5
-  m_Name: Image
+  m_Name: "\u30B2\u30FC\u30E0\u306E\u59CB\u3081\u65B9\u2461"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 61ee046010ce5764c96d3a51f7b7bb07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -920,7 +920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 541b2eb9776785d438599992ae8d23a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c3ba8a53ed5044642ab1b37e0107e558, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19ceb2310d9a1b14889995c279e22ca9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2205,7 +2205,7 @@ GameObject:
   - component: {fileID: 820451258}
   - component: {fileID: 820451257}
   m_Layer: 5
-  m_Name: Image
+  m_Name: "\u30B2\u30FC\u30E0\u306E\u59CB\u3081\u65B9\u2460"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2251,7 +2251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 361004acff6637a4eaaa7e63864e0a83, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2939,7 +2939,7 @@ RectTransform:
   m_GameObject: {fileID: 1182961345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.3136883, y: 3.3136883, z: 3.3136883}
+  m_LocalScale: {x: 0.6, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1922745722}
@@ -2948,7 +2948,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 664, y: -474}
+  m_AnchoredPosition: {x: 888, y: -474}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182961348
@@ -4475,7 +4475,7 @@ RectTransform:
   m_GameObject: {fileID: 1831153566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5.3378167, y: 1.0675635, z: 1.0675635}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1863072410}
@@ -4483,7 +4483,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831153568
@@ -4519,7 +4519,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u524D\u306E\u30DA\u30FC\u30B8\u3078"
+  m_Text: "\u25C1"
 --- !u!222 &1831153569
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4557,7 +4557,7 @@ RectTransform:
   m_GameObject: {fileID: 1863072409}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2026904, y: 3.2026904, z: 3.2026904}
+  m_LocalScale: {x: 0.6, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1831153567}
@@ -4566,7 +4566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -670, y: -470}
+  m_AnchoredPosition: {x: -893, y: -470}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863072411
@@ -4780,7 +4780,7 @@ RectTransform:
   m_GameObject: {fileID: 1922745721}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5.329355, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1182961346}
@@ -4788,7 +4788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 8, y: 1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1922745723
@@ -4824,7 +4824,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6B21\u306E\u30DA\u30FC\u30B8\u3078"
+  m_Text: "\u25B7"
 --- !u!222 &1922745724
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5123,7 +5123,7 @@ GameObject:
   - component: {fileID: 2065643337}
   - component: {fileID: 2065643336}
   m_Layer: 5
-  m_Name: Image
+  m_Name: "\u30B2\u30FC\u30E0\u306E\u59CB\u3081\u65B9\u2462"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5169,7 +5169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fa03b4cdd722ba8458b17da951f2cf78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
