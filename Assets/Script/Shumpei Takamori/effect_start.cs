@@ -19,7 +19,7 @@ public class effect_start : MonoBehaviour
 	void Start()
 	{
 
-		//　ゲームオブジェクト登場時にエフェクトをインスタンス化
+		//　ゲームオブジェクト消滅時にエフェクトをインスタンス化
 		var instantiateEffect = GameObject.Instantiate(effectObject, transform.position + new Vector3(0f, offset, 0f), Quaternion.identity) as GameObject;
 		Destroy(instantiateEffect, deleteTime);
 	}
