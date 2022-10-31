@@ -9,6 +9,7 @@ public class BossAppear : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //ボスを非アクティブにしておく
         boss.SetActive(false);
         appearScript = GetComponent<AppearScript>();
     }
@@ -16,6 +17,7 @@ public class BossAppear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //雑魚敵を一定数倒すとボスをアクティブにする
         var deadCounts = appearScript.deadCount + appearScript.deadCount2;
         if (deadCounts == 10)
         {

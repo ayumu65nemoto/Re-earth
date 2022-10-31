@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private CharacterController cCon;
-	private Rigidbody rb;
     private Vector3 velocity;
     [SerializeField]
     private float Speed;
@@ -21,7 +20,7 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField]
 	public int Power;
 
-	public float jumpPower = 10f;
+	public float jumpPower = 8.0f;
 	public GameObject cam;
 	public Vector3 Cam_forward;
 	public Vector3 move_forward;
@@ -87,7 +86,6 @@ public class PlayerMove : MonoBehaviour
 	void Start()
     {
         cCon = GetComponent<CharacterController>();
-		rb = GetComponent<Rigidbody>();
 		animator = GetComponent<Animator>();
         velocity = Vector3.zero;
 		avoidCount = 5;
@@ -160,15 +158,7 @@ public class PlayerMove : MonoBehaviour
 					animator.SetFloat("Speed", 0f);
 				}
 
-				//if (Input.GetKeyDown(KeyCode.Space)
-				//&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")
-				//)
-				//{
-				//	animator.SetTrigger("Jump");
-				//	velocity.y += jumpPower;
-				//}
-
-				if (speedSkill == true)
+                if (speedSkill == true)
 				{
 					if (Input.GetKeyDown("joystick button 4") || Input.GetKeyDown(KeyCode.E))
 					{
@@ -190,15 +180,6 @@ public class PlayerMove : MonoBehaviour
 						speedTime = 0.0f;
 					}
 				}
-
-				//if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
-				//            {
-				//	if (powerCount > 0)
-				//                {
-				//		StartCoroutine("PowerUp");
-				//		powerCount -= 1;
-				//                }
-				//            }
 
 				//Vector3.Scale(a, b); -> aとbを掛けた「三次元ベクトル」を取得できる
 				Cam_forward = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;    //「カメラの」正面

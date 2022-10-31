@@ -8,7 +8,6 @@ public class BossAttack : MonoBehaviour
     {
         if(col.tag == "Player")
         {
-            Debug.Log("“–‚½‚è");
             col.GetComponent<PlayerMove>().TakeBossDamage(transform.root);
         }
     }
