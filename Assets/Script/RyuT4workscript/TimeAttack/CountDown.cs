@@ -127,13 +127,13 @@ public class CountDown : MonoBehaviour
 
         if(CLEAR == 2)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown("joystick button 1") || Input.GetKeyDown(KeyCode.Return))
             {
                 Panel1.SetActive(false);
                 Panel2.SetActive(true);
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown("joystick button 2") || Input.GetKeyDown(KeyCode.R))
             {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("ranking");
@@ -163,7 +163,7 @@ public class CountDown : MonoBehaviour
                 returnkey = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown("joystick button 2") || Input.GetKeyDown(KeyCode.R))
             {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("ranking");
@@ -172,7 +172,7 @@ public class CountDown : MonoBehaviour
 
         if(returnkey == true)
         {
-            if(Input.GetKeyDown(KeyCode.Return))
+            if(Input.GetKeyDown("joystick button 1") || Input.GetKeyDown(KeyCode.Return))
             {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("ranking");

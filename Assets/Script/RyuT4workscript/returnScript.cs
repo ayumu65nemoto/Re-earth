@@ -8,7 +8,7 @@ public class returnScript : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown("joystick button 6") || Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene("Title");
