@@ -45,7 +45,7 @@ public class demoUIscript : MonoBehaviour
             if (demo1 > 0)
             {
 
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetKeyDown("joystick button 5") || Input.GetKeyDown(KeyCode.Q))
                 {
                     demo1 -= 1;
                     UIobj.fillAmount += 1;
@@ -77,7 +77,7 @@ public class demoUIscript : MonoBehaviour
             if (demo2 > 0)
             {
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown("joystick button 4") || Input.GetKeyDown(KeyCode.E))
                 {
                     demo2 -= 1;
                     UIobj2.fillAmount += 1;
@@ -109,7 +109,7 @@ public class demoUIscript : MonoBehaviour
             if (demo3 > 0)
             {
 
-                if (Input.GetKeyDown(KeyCode.C))
+                if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.C))
                 {
                     demo3 -= 1;
                     UIobj3.fillAmount += 1;
