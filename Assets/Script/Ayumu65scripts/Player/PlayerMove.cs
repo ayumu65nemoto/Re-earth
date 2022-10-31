@@ -20,13 +20,12 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField]
 	public int Power;
 
-	public float jumpPower = 8.0f;
 	public GameObject cam;
 	public Vector3 Cam_forward;
 	public Vector3 move_forward;
 	public Vector3 InputMagnitude;
-	public float InputHorizontal;
-	public float InputVertical;
+	private float InputHorizontal;
+	private float InputVertical;
 	public float InputB;
 	public float gravity;
 	//　レイを飛ばす位置
@@ -125,20 +124,20 @@ public class PlayerMove : MonoBehaviour
 				animator.SetBool("Fall", true);
 			}
 
-			if (cCon.isGrounded || isGround)
+			if (isGround)
 			{
 				//velocity.y = 0f;  //Y方向への速度をゼロにする
 				animator.SetBool("Fall", false);
 								  //　地面に接地してる時は速度を初期化
-				if (cCon.isGrounded)
-				{
-					velocity = Vector3.zero;
-					//　レイを飛ばして接地確認の場合は重力だけは働かせておく、前後左右は初期化
-				}
-				else
-				{
-					velocity = new Vector3(0f, velocity.y, 0f);
-				}
+				//if (cCon.isGrounded)
+				//{
+				//	velocity = Vector3.zero;
+				//	//　レイを飛ばして接地確認の場合は重力だけは働かせておく、前後左右は初期化
+				//}
+				//else
+				//{
+				//	velocity = new Vector3(0f, velocity.y, 0f);
+				//}
 
 				InputHorizontal = Input.GetAxis("Horizontal");  //横の入力
 				InputVertical = Input.GetAxis("Vertical");      //縦の入力
@@ -186,9 +185,9 @@ public class PlayerMove : MonoBehaviour
 
 				move_forward = Cam_forward * InputVertical + cam.transform.right * InputHorizontal;
 
-				velocity = move_forward * walkSpeed + new Vector3(0, velocity.y, 0);
+				velocity = move_forward * walkSpeed;
 
-				velocity.y += Physics.gravity.y * Time.deltaTime;
+				//velocity.y += Physics.gravity.y * Time.deltaTime;
 
 				cCon.Move(velocity * Time.deltaTime);
 
@@ -235,7 +234,6 @@ public class PlayerMove : MonoBehaviour
 				attackCount += 1;
 				animator.SetTrigger("Attack");
 				SetState(MyState.Attack);
-				//Debug.Log(state);
 				if (attackCount  < 3)
                 {
 					audioSource.PlayOneShot(attackVoice1);
