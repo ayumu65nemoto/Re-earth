@@ -10,6 +10,9 @@ public class BossAppear : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip appearSE;
+    public GameObject appearEffect;
+    private float lapsedTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +27,25 @@ public class BossAppear : MonoBehaviour
     {
         //雑魚敵を一定数倒すとボスをアクティブにする
         var deadCounts = appearScript.deadCount + appearScript.deadCount2;
-        if (deadCounts == 10)
+        if (deadCounts == 3)
         {
-            boss.SetActive(true);
-            audioSource.PlayOneShot(appearSE);
+            lapsedTime += Time.deltaTime;
+            GenerateApperEffect();
+            if (lapsedTime > 2)
+            {
+                boss.SetActive(true);
+                audioSource.PlayOneShot(appearSE);
+            }
         }
+    }
+
+    void GenerateApperEffect()
+    {
+        //エフェクトを生成する
+        GameObject appear_effect = Instantiate(appearEffect) as GameObject;
+        //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+        appear_effect.transform.position = gameObject.transform.position;
+        //エフェクトを消す
+        Destroy(appear_effect, 1.0f);
     }
 }

@@ -187,13 +187,10 @@ public class PlayerMove : MonoBehaviour
 
 				velocity = move_forward * walkSpeed;
 
-				//velocity.y += Physics.gravity.y * Time.deltaTime;
-
 				cCon.Move(velocity * Time.deltaTime);
 
 				//ˆÚ“®•ûŒü‚ÉŒü‚«‚ð•Ï‚¦‚é
 				//Vector3.zero -> Vector3(0, 0, 0) x, y, z‚Æ‚à‚É‘S‚Ä‚O‚Ìó‘Ô
-				//u!=v-> “™‚µ‚­‚È‚¢
 				if (move_forward != Vector3.zero)
 				{
 					this.transform.rotation = Quaternion.LookRotation(move_forward);
@@ -278,12 +275,4 @@ public class PlayerMove : MonoBehaviour
 		yield return new WaitForSeconds(5.0f);
 		walkSpeed = Speed;
 	}
-
-	//IEnumerator PowerUp()
-	//{
-	//	audioSource.PlayOneShot(speedUpVoice);
-	//	attackPower *= 5;
-	//	yield return new WaitForSeconds(3.0f);
-	//	attackPower = Power;
-	//}
 }
