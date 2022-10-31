@@ -35,6 +35,7 @@ public class modeScript1 : MonoBehaviour
             }
             if (startkey == true)
             {
+                black1.SetActive(false);
                 SceneManager.LoadScene("game1");
             }
         }
