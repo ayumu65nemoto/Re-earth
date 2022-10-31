@@ -7,15 +7,15 @@ public class BossStatus : MonoBehaviour
 {
     //敵のMaxHP
     [SerializeField]
-    private int maxHp = 15;
+    private int maxHp = 30;
     //　敵のHP
     [SerializeField]
-    private int hp = 3;
+    private int hp;
     // HP表示用UI
     [SerializeField]
     private GameObject HPUI;
     //HP表示用スライダー
-    private Slider hpSlider;
+    public Slider hpSlider;
 
     void Start()
     {
