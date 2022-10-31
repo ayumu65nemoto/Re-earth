@@ -27,6 +27,9 @@ public class AppearScript : MonoBehaviour
     public int deadCount;
     public int deadCount2;
 
+    public GameObject summonEffect;
+    private float offset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +71,7 @@ public class AppearScript : MonoBehaviour
 
         var enemy = Instantiate(enemys[randomValue], new Vector3(vecX, 0, vecZ), Quaternion.Euler(0f, randomRotationY, 0f));
 
+        //EnemyMove2‚ÉPlayer‚ğ“n‚·ˆ—
         var ene = enemy.GetComponent<EnemyMove2>();
         if (ene != null)
         {

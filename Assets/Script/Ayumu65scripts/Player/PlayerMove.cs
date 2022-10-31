@@ -124,7 +124,7 @@ public class PlayerMove : MonoBehaviour
 				animator.SetBool("Fall", true);
 			}
 
-			if (isGround)
+			if (cCon.isGrounded || isGround)
 			{
 				//velocity.y = 0f;  //Y•ûŒü‚Ö‚Ì‘¬“x‚ğƒ[ƒ‚É‚·‚é
 				animator.SetBool("Fall", false);
