@@ -6,12 +6,17 @@ public class BossAppear : MonoBehaviour
 {
     public GameObject boss;
     public AppearScript appearScript;
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip appearSE;
     // Start is called before the first frame update
     void Start()
     {
         //ボスを非アクティブにしておく
         boss.SetActive(false);
         appearScript = GetComponent<AppearScript>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,6 +27,7 @@ public class BossAppear : MonoBehaviour
         if (deadCounts == 10)
         {
             boss.SetActive(true);
+            audioSource.PlayOneShot(appearSE);
         }
     }
 }

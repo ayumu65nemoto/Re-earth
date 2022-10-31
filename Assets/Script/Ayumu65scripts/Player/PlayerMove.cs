@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 	private Transform rayPosition;
 	//　レイの距離
 	[SerializeField]
-	private float rayRange = 1.0f;
+	private float rayRange = 3.0f;
 	//　レイが地面に到達しているかどうか
 	private bool isGround = false;
 	//　下方向に強制的に加える力

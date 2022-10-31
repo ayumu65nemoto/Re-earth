@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AppearSE : MonoBehaviour
 {
+    [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip appearSE;
