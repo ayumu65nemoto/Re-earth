@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/options.unity
+    path: Assets/Scenes/guide.unity
     guid: c8bba5a124545314780dfac95cb2f6e5
   - enabled: 1
     path: Assets/Scenes/modeselect.unity
@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ranking.unity
     guid: b14124af4acb1e045b50b0dc9be03fd8
+  - enabled: 1
+    path: Assets/Scenes/option.unity
+    guid: 89357f2c46371e046935bfb3264e0528
+  - enabled: 1
+    path: Assets/Scenes/qredit.unity
+    guid: 4c3c9c288808a7f46b268b0bcaae7e65
   m_configObjects: {}
