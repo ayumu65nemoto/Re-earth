@@ -1151,6 +1151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110040130}
   - component: {fileID: 1110040129}
+  - component: {fileID: 1110040131}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -1165,7 +1166,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110040128}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 62d5fa297d5c13745bda8d7b21e3e92a, type: 3}
@@ -1269,6 +1270,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1110040131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110040128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa44db54ae0068040bb6763c4d29afd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 1309773458}
+  clip: {fileID: 8300000, guid: 62d5fa297d5c13745bda8d7b21e3e92a, type: 3}
 --- !u!1 &1292983809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,8 +1441,9 @@ GameObject:
   - component: {fileID: 1309773457}
   - component: {fileID: 1309773456}
   - component: {fileID: 1309773455}
+  - component: {fileID: 1309773458}
   m_Layer: 0
-  m_Name: SoundSound
+  m_Name: SoundManager
   m_TagString: SoundManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1640,6 +1656,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1309773458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309773454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85b509c7b8cdf64f9fd4b69b4697f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmAudioSource: {fileID: 1309773456}
+  seAudioSource: {fileID: 1309773456}
 --- !u!1 &1519663914
 GameObject:
   m_ObjectHideFlags: 0
