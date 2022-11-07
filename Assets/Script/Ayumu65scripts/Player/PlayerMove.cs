@@ -314,8 +314,10 @@ public class PlayerMove : MonoBehaviour
 		GameObject speed_effect = Instantiate(speedEffect) as GameObject;
 		//エフェクトが発生する場所を決定する(敵オブジェクトの場所)
 		speed_effect.transform.position = gameObject.transform.position;
+		//エフェクトを子オブジェクトにする
+		speed_effect.transform.parent = gameObject.transform;
 		//エフェクトを消す
-		Destroy(speed_effect, 2.0f);
+		Destroy(speed_effect, 5.0f);
 	}
 
 	void GeneratePowerEffect()
@@ -324,7 +326,9 @@ public class PlayerMove : MonoBehaviour
 		GameObject power_effect = Instantiate(powerEffect) as GameObject;
 		//エフェクトが発生する場所を決定する(敵オブジェクトの場所)
 		power_effect.transform.position = gameObject.transform.position;
+		//エフェクトを子オブジェクトにする
+		power_effect.transform.parent = gameObject.transform;
 		//エフェクトを消す
-		Destroy(power_effect, 2.0f);
+		Destroy(power_effect, 5.0f);
 	}
 }
