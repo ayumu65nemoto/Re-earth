@@ -98,7 +98,6 @@ public class EnemyMove : MonoBehaviour
                 direction = (setPosition.GetDestination() - transform.position).normalized;
                 transform.LookAt(new Vector3(setPosition.GetDestination().x, transform.position.y, setPosition.GetDestination().z));
                 velocity = direction * walkSpeed;
-                //Debug.Log(destination);
             }
 
             if (state == EnemyState.Walk)
@@ -139,15 +138,6 @@ public class EnemyMove : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         cCon.Move(velocity * Time.deltaTime);
 
-        //if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    if (powerCount > 0)
-        //    {
-        //        StartCoroutine("PowerUp");
-        //        powerCount -= 1;
-        //    }
-        //}
-
         if (attackSkill == true) 
         {
             if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.C))
@@ -174,7 +164,6 @@ public class EnemyMove : MonoBehaviour
 
     public void TakeDamage()
     {
-        //sCol.enabled = false;
         audioSource.PlayOneShot(damageSound);
         enemyStates.SetHp(enemyStates.GetHp() - attackPower);
         GenerateHitEffect();
@@ -184,17 +173,6 @@ public class EnemyMove : MonoBehaviour
             deadEnemy += 50;
         }
     }
-
-    //こっちだとうまくいかないのはなぜ
-    //二重チェックだとうまくいく
-    //public void Dead()
-    //{
-    //    SetState(EnemyState.Dead);
-    //    appearScript.AppearEnemy();
-    //    appearScript.deadCount += 1;
-    //    isDead = true;
-    //    Debug.Log("a " + isDead);
-    //}
 
     public void Dead()
     {

@@ -136,15 +136,6 @@ public class BossMove : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         cCon.Move(velocity * Time.deltaTime);
 
-        //if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    if (powerCount > 0)
-        //    {
-        //        StartCoroutine("PowerUp");
-        //        powerCount -= 1;
-        //    }
-        //}
-
         if (attackSkill == true)
         {
             if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.C))
@@ -223,12 +214,6 @@ public class BossMove : MonoBehaviour
             animator.SetFloat("Speed", 0f);
             animator.SetBool("Attack", false);
         }
-        //else if (tempState == EnemyState.Damage)
-        //{
-        //    velocity = Vector3.zero;
-        //    animator.SetBool("Attack", false);
-        //    //animator.SetTrigger("Damage");
-        //}
         else if (tempState == EnemyState.Dead)
         {
             animator.SetTrigger("Dead");
@@ -254,7 +239,6 @@ public class BossMove : MonoBehaviour
 
     IEnumerator PowerUp()
     {
-        //audioSource.PlayOneShot(speedUpVoice);
         attackPower *= 2;
         yield return new WaitForSeconds(5.0f);
         attackPower = Power;

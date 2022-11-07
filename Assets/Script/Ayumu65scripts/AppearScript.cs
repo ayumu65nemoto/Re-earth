@@ -27,7 +27,6 @@ public class AppearScript : MonoBehaviour
     public int deadCount;
     public int deadCount2;
 
-    public GameObject summonEffect;
     private float offset;
 
     // Start is called before the first frame update

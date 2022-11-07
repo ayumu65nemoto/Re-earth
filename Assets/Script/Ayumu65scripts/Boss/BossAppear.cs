@@ -12,6 +12,7 @@ public class BossAppear : MonoBehaviour
     private AudioClip appearSE;
     public GameObject appearEffect;
     private float lapsedTime;
+    private bool appearFlag;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class BossAppear : MonoBehaviour
         boss.SetActive(false);
         appearScript = GetComponent<AppearScript>();
         audioSource = GetComponent<AudioSource>();
+        appearFlag = false;
     }
 
     // Update is called once per frame
@@ -29,12 +31,17 @@ public class BossAppear : MonoBehaviour
         var deadCounts = appearScript.deadCount + appearScript.deadCount2;
         if (deadCounts == 3)
         {
-            lapsedTime += Time.deltaTime;
-            GenerateApperEffect();
-            if (lapsedTime > 2)
+            if (!appearFlag)
             {
-                boss.SetActive(true);
-                audioSource.PlayOneShot(appearSE);
+                lapsedTime += Time.deltaTime;
+                GenerateApperEffect();
+                if (lapsedTime > 1)
+                {
+                    boss.SetActive(true);
+                    audioSource.PlayOneShot(appearSE);
+                    appearFlag = true;
+                }
+
             }
         }
     }
@@ -46,6 +53,6 @@ public class BossAppear : MonoBehaviour
         //エフェクトが発生する場所を決定する(敵オブジェクトの場所)
         appear_effect.transform.position = gameObject.transform.position;
         //エフェクトを消す
-        Destroy(appear_effect, 1.0f);
+        Destroy(appear_effect, 3.0f);
     }
 }
