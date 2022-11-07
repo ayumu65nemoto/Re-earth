@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 	private Transform rayPosition;
 	//　レイの距離
 	[SerializeField]
-	private float rayRange = 5.0f;
+	private float rayRange = 10.0f;
 	//　レイが地面に到達しているかどうか
 	private bool isGround = false;
 	//　下方向に強制的に加える力
@@ -58,6 +58,12 @@ public class PlayerMove : MonoBehaviour
 	public bool speedSkill;
 	public float avoidTime;
 	public float speedTime;
+
+	public bool powerSkill;
+	public float powerTime;
+
+	public GameObject speedEffect;
+	public GameObject powerEffect;
 
 	public enum MyState
 	{
@@ -98,6 +104,8 @@ public class PlayerMove : MonoBehaviour
 		speedSkill = true;
 		avoidTime = 0f;
 		speedTime = 0f;
+		powerSkill = true;
+		powerTime = 0f;
 	}
 
 
@@ -159,7 +167,7 @@ public class PlayerMove : MonoBehaviour
 
                 if (speedSkill == true)
 				{
-					if (Input.GetKeyDown("joystick button 4") || Input.GetKeyDown(KeyCode.E))
+					if (/*Input.GetKeyDown("joystick button 4") || */Input.GetKeyDown(KeyCode.E))
 					{
 						if (speedCount > 0)
 						{
@@ -179,6 +187,29 @@ public class PlayerMove : MonoBehaviour
 						speedTime = 0.0f;
 					}
 				}
+				
+				if (powerSkill == true)
+                {
+					if (/*Input.GetKeyDown("joystik button 5") || */Input.GetKeyDown(KeyCode.C))
+                    {
+						if (powerCount > 0)
+                        {
+							powerCount -= 1;
+							powerSkill = false;
+							GeneratePowerEffect();
+                        }
+                    }
+                }
+
+				if (powerSkill == false)
+                {
+					powerTime += Time.deltaTime;
+					if (powerTime >= 5)
+                    {
+						powerSkill = true;
+						powerTime = 0.0f;
+                    }
+                }
 
 				//Vector3.Scale(a, b); -> aとbを掛けた「三次元ベクトル」を取得できる
 				Cam_forward = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;    //「カメラの」正面
@@ -270,9 +301,30 @@ public class PlayerMove : MonoBehaviour
 
 	IEnumerator SpeedUp()
 	{
+		GenerateSpeedEffect();
 		audioSource.PlayOneShot(speedUpVoice);
 		walkSpeed *= 1.5f;
 		yield return new WaitForSeconds(5.0f);
 		walkSpeed = Speed;
+	}
+
+	void GenerateSpeedEffect()
+	{
+		//エフェクトを生成する
+		GameObject speed_effect = Instantiate(speedEffect) as GameObject;
+		//エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+		speed_effect.transform.position = gameObject.transform.position;
+		//エフェクトを消す
+		Destroy(speed_effect, 2.0f);
+	}
+
+	void GeneratePowerEffect()
+	{
+		//エフェクトを生成する
+		GameObject power_effect = Instantiate(powerEffect) as GameObject;
+		//エフェクトが発生する場所を決定する(敵オブジェクトの場所)
+		power_effect.transform.position = gameObject.transform.position;
+		//エフェクトを消す
+		Destroy(power_effect, 2.0f);
 	}
 }
