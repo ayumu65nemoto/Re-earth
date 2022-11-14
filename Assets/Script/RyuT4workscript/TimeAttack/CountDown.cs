@@ -10,7 +10,7 @@ public class CountDown : MonoBehaviour
     private float time2 = 5.0f;  //ゲームオーバー時の時間
     public int currentHp;
     public int maxHp;      //最大HP
-    public Slider hpBar;   //HPバー
+   // public Slider hpBar;   //HPバー
     public Text hpText;    //HPの数字
     public int mathscore;
     public static int score;  //スコア格納変数（シーン共有可）
@@ -31,6 +31,8 @@ public class CountDown : MonoBehaviour
     public int CLEAR;
     public int deadcountBoss;
     public bool returnkey;
+
+    public Image hpbardemo;
 
 
     private void OnCollisionEnter(Collision collision)
@@ -53,7 +55,8 @@ public class CountDown : MonoBehaviour
         currentHp = maxHp;
 
         //スライダーの最大値を変更
-        hpBar.maxValue = maxHp;
+        //hpBar.maxValue = maxHp;
+        hpbardemo.fillAmount = maxHp / 100f;
 
         Panel1.SetActive(true);
         Panel2.SetActive(false);
@@ -144,7 +147,7 @@ public class CountDown : MonoBehaviour
         {
             mathscore -= 1;
             time -= Time.deltaTime;
-            timerText.text = time.ToString("F1");
+            timerText.text = time.ToString("F0");
         }
         else if (time < 0)
         {

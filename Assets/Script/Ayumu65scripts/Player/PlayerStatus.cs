@@ -14,11 +14,13 @@ public class PlayerStatus : MonoBehaviour
     const int MIN = 0;
     const int MAX = 100;
 
-    public Slider hpBar;
+    //public Slider hpBar;
     public Text hpText;
 
     public Text gameOverText;
     public Text returnText;
+
+    public Image HPbardemo1; //追加箇所
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +30,14 @@ public class PlayerStatus : MonoBehaviour
         currentHp = maxHp;
 
         //スライダーの最大値を変更
-        hpBar.maxValue = maxHp;
+        //hpBar.maxValue = maxHp;
+        HPbardemo1.fillAmount = 100;
     }
 
     // Update is called once per frame
     void Update()
     {   //スライダーの値をリアルタイムで変更
-        hpBar.value = currentHp;
+        //hpBar.value = currentHp;
 
         //HPテキストの変更
         hpText.text = currentHp.ToString() + " / " + maxHp.ToString(); //ToString = 文字化
@@ -59,6 +62,8 @@ public class PlayerStatus : MonoBehaviour
     public void Damage()
     {   //現在値から－10
         currentHp -= 3;
+        HPbardemo1.fillAmount -= 3 / 100f;
+
         // 最大値を超えたら最大値を渡す
         currentHp = System.Math.Min(currentHp, MAX);
         // 最小値を下回ったら最小値を渡す
@@ -69,6 +74,8 @@ public class PlayerStatus : MonoBehaviour
     public void BossDamage()
     {
         currentHp -= 7;
+        HPbardemo1.fillAmount -= 7 / 100f;
+
         // 最大値を超えたら最大値を渡す
         currentHp = System.Math.Min(currentHp, MAX);
         // 最小値を下回ったら最小値を渡す
@@ -79,6 +86,8 @@ public class PlayerStatus : MonoBehaviour
     public void Heal()
     {
         currentHp += 2;
+        HPbardemo1.fillAmount += 2 / 100f;
+
         // 最大値を超えたら最大値を渡す
         currentHp = System.Math.Min(currentHp, MAX);
         // 最小値を下回ったら最小値を渡す
