@@ -18,6 +18,16 @@ public class VolumeController : MonoBehaviour
     {
         slider = GetComponent<Slider>();
         soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>(); //SoundManager‚ğQÆ
+
+        switch (volumeType)
+        {
+            case VolumeType.BGM:
+                slider.value = soundManager.BgmVolume;
+                break;
+            case VolumeType.SE:
+                slider.value = soundManager.SeVolume;
+                break;
+        }
     }
 
    public void OnValueChanged()
