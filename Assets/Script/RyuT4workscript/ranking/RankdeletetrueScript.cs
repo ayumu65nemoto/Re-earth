@@ -25,6 +25,7 @@ public class RankdeletetrueScript : MonoBehaviour
         if (chan == 1)
         {
             yes = 0;
+            chan = 0;
         }
     }
 

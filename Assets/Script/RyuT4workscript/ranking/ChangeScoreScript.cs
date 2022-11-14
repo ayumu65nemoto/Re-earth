@@ -17,8 +17,8 @@ public class ChangeScoreScript : MonoBehaviour
     public Text demo;
     public int[] RankSc = new int[] { 0, 0, 0, 0, 0 };
     string[] ranking = { "Rank1", "Rank2", "Rank3", "Rank4", "Rank5" };
-    public int reset;
-    public int yestrue;
+    public static int reset;
+    public static int yestrue;
     public static int  change;
     public GameObject gamen1;
     public GameObject gamen2;
@@ -104,6 +104,8 @@ public class ChangeScoreScript : MonoBehaviour
             gamen2.SetActive(false);
 
             change = 1;
+            reset = 0;
+            yestrue = 0;
 
         }
 
@@ -113,5 +115,15 @@ public class ChangeScoreScript : MonoBehaviour
     public static int Gettruechange()
     {
         return change;
+    }
+
+    public static int Gettruereset()
+    {
+        return reset;
+    }
+
+    public static int Gettrueyes()
+    {
+        return yestrue;
     }
 }

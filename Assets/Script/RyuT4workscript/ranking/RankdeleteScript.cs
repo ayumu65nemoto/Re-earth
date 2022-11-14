@@ -7,7 +7,7 @@ public class RankdeleteScript : MonoBehaviour
 
     public static int delete;
     // Start is called before the first frame update
-    public void OnClickStartButton()
+    public void OnClick()
     {
         delete = 1;
     }
@@ -16,4 +16,11 @@ public class RankdeleteScript : MonoBehaviour
     {
         return delete;
     }
+
+    private void Update()
+    {
+        delete = ChangeScoreScript.Gettruereset();
+
+    }
+
 }
