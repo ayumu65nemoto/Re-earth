@@ -24,7 +24,7 @@ public class faceChangeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //facekey = CountDown.Facechange1();
+        facekey = CountDown.Facechange1();
         //ƒNƒŠƒA‚ÌŠç
         if (facekey == 1)
         {
