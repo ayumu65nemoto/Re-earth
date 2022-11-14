@@ -42,6 +42,11 @@ public class PlayerStatus : MonoBehaviour
         //HPテキストの変更
         hpText.text = currentHp.ToString() + " / " + maxHp.ToString(); //ToString = 文字化
 
+        if (currentHp <= 50) ;
+        {
+            CountDown.facechange = 4;
+        }
+
         if (currentHp <= 0)
         {
             gameOverText.text = "GAME OVER";
@@ -49,6 +54,7 @@ public class PlayerStatus : MonoBehaviour
             time += Time.deltaTime;
             time2 -= Time.deltaTime;
             returnText.text = time2.ToString("F0") + "秒後タイトルに戻ります";
+            CountDown.facechange = 3;
 
             // 3秒後に画面遷移（Titleへ移動）
             if (time2 <= 0)

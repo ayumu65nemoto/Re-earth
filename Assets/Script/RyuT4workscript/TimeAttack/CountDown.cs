@@ -32,7 +32,9 @@ public class CountDown : MonoBehaviour
     public int deadcountBoss;
     public bool returnkey;
 
+
     public Image hpbardemo;
+    public static int facechange;
 
 
     private void OnCollisionEnter(Collision collision)
@@ -126,6 +128,8 @@ public class CountDown : MonoBehaviour
             clearText.text = "CLEAR";
             CLEAR = 2;
 
+            facechange = 1;
+
         }
 
         if(CLEAR == 2)
@@ -159,6 +163,9 @@ public class CountDown : MonoBehaviour
             Time.timeScale = 0.001f;
             timeUpText.text = "TIME UP";
             pleaseEnterText.text = "Please Enter";
+
+            facechange = 2;
+
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Panel1.SetActive(false);
@@ -191,6 +198,11 @@ public class CountDown : MonoBehaviour
     public static int Getscore()
     {
         return score;
+    }
+
+    public static int Facechange1()
+    {
+        return facechange;
     }
 
 
