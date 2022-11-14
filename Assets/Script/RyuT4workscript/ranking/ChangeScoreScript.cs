@@ -13,7 +13,7 @@ public class ChangeScoreScript : MonoBehaviour
     public Text Rank3;
     public Text Rank4;
     public Text Rank5;
-    int score;
+    public static int rankscore;
     public Text demo;
     public int[] RankSc = new int[] { 0, 0, 0, 0, 0 };
     string[] ranking = { "Rank1", "Rank2", "Rank3", "Rank4", "Rank5" };
@@ -30,8 +30,8 @@ public class ChangeScoreScript : MonoBehaviour
         gamen2.SetActive(false);
         reset = 0;
         yestrue = 0;
-        score = CountDown.Getscore();
-        demo.text = string.Format("前回スコア：{0}", score);
+        rankscore = CountDown.Getscore();
+        demo.text = string.Format("前回スコア：{0}", rankscore);
 
         for (int i = 0; i < 5; i++)
         {
@@ -40,11 +40,11 @@ public class ChangeScoreScript : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            if(score >= RankSc[i])
+            if(rankscore >= RankSc[i])
             {
                 var change = RankSc[i];
-                RankSc[i] = score;
-                score = change;
+                RankSc[i] = rankscore;
+                rankscore = change;
             }
         }
 
