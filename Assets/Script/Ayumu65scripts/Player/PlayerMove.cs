@@ -40,7 +40,8 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField]
 	private Vector3 addForceDownPower = Vector3.down;
 
-	private AudioSource audioSource;
+	[SerializeField]
+	SoundManager soundManager;
 	[SerializeField]
 	private AudioClip attackVoice1;
 	[SerializeField]
@@ -98,7 +99,7 @@ public class PlayerMove : MonoBehaviour
 		speedCount = 5;
 		powerCount = 5;
 		walkSpeed = Speed;
-		audioSource = GetComponent<AudioSource>();
+		soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>(); //SoundManager‚ðŽQÆ
 		attackPower = Power;
 		avoidSkill = true;
 		speedSkill = true;
@@ -234,7 +235,7 @@ public class PlayerMove : MonoBehaviour
 					{
 						if (avoidCount > 0)
 						{
-							audioSource.PlayOneShot(avoidVoice);
+							soundManager.PlaySe(avoidVoice);
 							velocity = move_forward * walkSpeed * 50 + new Vector3(0, velocity.y, 0);
 							cCon.Move(velocity * Time.deltaTime);
 							avoidCount -= 1;
@@ -264,12 +265,12 @@ public class PlayerMove : MonoBehaviour
 				SetState(MyState.Attack);
 				if (attackCount  < 3)
                 {
-					audioSource.PlayOneShot(attackVoice1);
+					soundManager.PlaySe(attackVoice1);
 				}
 				
 				if (attackCount == 3)
                 {
-					audioSource.PlayOneShot(attackVoice3);
+					soundManager.PlaySe(attackVoice3);
 					attackCount = 0;
 				}
 			}
@@ -278,7 +279,7 @@ public class PlayerMove : MonoBehaviour
 
 	public void TakeDamage(Transform enemyTransform)
 	{
-		audioSource.PlayOneShot(damageVoice);
+		soundManager.PlaySe(damageVoice);
 		state = MyState.Damage;
 		velocity = Vector3.zero;
 		animator.SetTrigger("Damage");
@@ -287,7 +288,7 @@ public class PlayerMove : MonoBehaviour
 
 	public void TakeBossDamage(Transform enemyTransform)
     {
-		audioSource.PlayOneShot(damageVoice);
+		soundManager.PlaySe(damageVoice);
 		state = MyState.Damage;
 		velocity = Vector3.zero;
 		animator.SetTrigger("Damage");
@@ -302,7 +303,7 @@ public class PlayerMove : MonoBehaviour
 	IEnumerator SpeedUp()
 	{
 		GenerateSpeedEffect();
-		audioSource.PlayOneShot(speedUpVoice);
+		soundManager.PlaySe(speedUpVoice);
 		walkSpeed *= 1.5f;
 		yield return new WaitForSeconds(5.0f);
 		walkSpeed = Speed;

@@ -3,7 +3,18 @@ guid: 270919a9e091ee648be197953faa7a7c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cam: {instanceID: 0}
+  - rayPosition: {instanceID: 0}
+  - soundManager: {instanceID: 0}
+  - attackVoice1: {fileID: 8300000, guid: f7641d257a346004aae2e615cd1630c1, type: 3}
+  - attackVoice2: {instanceID: 0}
+  - attackVoice3: {fileID: 8300000, guid: 98d30f1a220c83d45803a5f08b73cf3b, type: 3}
+  - damageVoice: {fileID: 8300000, guid: 783b77ea12993594d90d24b1107f5e27, type: 3}
+  - avoidVoice: {fileID: 8300000, guid: 12c92574f6e7f6748b7675107173429d, type: 3}
+  - speedUpVoice: {fileID: 8300000, guid: 7972c729e4238a440b0dfc15acd8b54c, type: 3}
+  - speedEffect: {instanceID: 0}
+  - powerEffect: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

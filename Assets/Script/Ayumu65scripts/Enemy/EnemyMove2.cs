@@ -62,6 +62,11 @@ public class EnemyMove2 : MonoBehaviour
     public GameObject deadEffect;
     public GameObject hitEffect;
 
+    [SerializeField]
+    SoundManager soundManager;
+    [SerializeField]
+    AudioClip damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +89,7 @@ public class EnemyMove2 : MonoBehaviour
         attackSkill = true;
         lapsedTime = 0f;
         isDead = false;
+        soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>(); //SoundManager‚ðŽQÆ
     }
 
     // Update is called once per frame
@@ -140,15 +146,6 @@ public class EnemyMove2 : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         cCon.Move(velocity * Time.deltaTime);
 
-        //if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    if (powerCount > 0)
-        //    {
-        //        StartCoroutine("PowerUp");
-        //        powerCount -= 1;
-        //    }
-        //}
-
         if (attackSkill == true)
         {
             if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.C))
@@ -175,7 +172,7 @@ public class EnemyMove2 : MonoBehaviour
 
     public void TakeDamage()
     {
-        audioSource.PlayOneShot(damageSound);
+        soundManager.PlaySe(damage);
         enemyStates.SetHp(enemyStates.GetHp() - attackPower);
         GenerateHitEffect();
         if (enemyStates.GetHp() == 0 && isDead == false)

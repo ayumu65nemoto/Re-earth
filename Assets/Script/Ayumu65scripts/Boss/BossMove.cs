@@ -36,9 +36,6 @@ public class BossMove : MonoBehaviour
     private BossStatus bossStatus;
     [SerializeField]
     private SphereCollider sCol;
-    private AudioSource audioSource;
-    [SerializeField]
-    private AudioClip damageSound;
 
     public static int deadEnemyBoss;
     public static int clear;
@@ -54,6 +51,11 @@ public class BossMove : MonoBehaviour
 
     public GameObject deadEffect;
     public GameObject hitEffect;
+
+    [SerializeField]
+    SoundManager soundManager;
+    [SerializeField]
+    AudioClip clip;
 
     // Start is called before the first frame update
     void Start()
@@ -71,12 +73,12 @@ public class BossMove : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(EnemyState.Walk);
-        audioSource = GetComponent<AudioSource>();
         playerMove = GetComponent<PlayerMove>();
         powerCount = 3;
         attackPower = Power;
         attackSkill = true;
         lapsedTime = 0f;
+        soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>(); //SoundManagerÇéQè∆
     }
 
     // Update is called once per frame
@@ -162,7 +164,7 @@ public class BossMove : MonoBehaviour
 
     public void TakeDamage()
     {
-        audioSource.PlayOneShot(damageSound);
+        soundManager.PlaySe(clip);
         bossStatus.SetHp(bossStatus.GetHp() - attackPower);
         GenerateHitEffect();
         if (bossStatus.GetHp() <= 0)

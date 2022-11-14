@@ -37,9 +37,6 @@ public class EnemyMove : MonoBehaviour
     private EnemyStates enemyStates;
     [SerializeField]
     private SphereCollider sCol;
-    private AudioSource audioSource;
-    [SerializeField]
-    private AudioClip damageSound;
 
     public static int deadEnemy;
 
@@ -59,6 +56,13 @@ public class EnemyMove : MonoBehaviour
     public GameObject deadEffect;
     public GameObject hitEffect;
 
+    [SerializeField]
+    SoundManager soundManager;
+    [SerializeField]
+    AudioClip damage;
+    [SerializeField]
+    AudioClip speedUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,13 +78,13 @@ public class EnemyMove : MonoBehaviour
         elapsedTime = 0f;
         SetState(EnemyState.Walk);
         deadEnemy = 0;
-        audioSource = GetComponent<AudioSource>();
         playerMove = GetComponent<PlayerMove>();
         powerCount = 3;
         attackPower = Power;
         attackSkill = true;
         lapsedTime = 0f;
         isDead = false;
+        soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>(); //SoundManagerÇéQè∆
     }
 
     void Update()
@@ -164,7 +168,7 @@ public class EnemyMove : MonoBehaviour
 
     public void TakeDamage()
     {
-        audioSource.PlayOneShot(damageSound);
+        soundManager.PlaySe(damage);
         enemyStates.SetHp(enemyStates.GetHp() - attackPower);
         GenerateHitEffect();
         if (enemyStates.GetHp() == 0 && isDead == false)
@@ -247,7 +251,7 @@ public class EnemyMove : MonoBehaviour
 
     IEnumerator PowerUp()
     {
-        audioSource.PlayOneShot(speedUpVoice);
+        soundManager.PlaySe(speedUp);
         attackPower *= 2;
         yield return new WaitForSeconds(5.0f);
         attackPower = Power;

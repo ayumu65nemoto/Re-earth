@@ -12,6 +12,7 @@ public class GameBGM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>(); //SoundManager‚ğQÆ
         soundManager.PlayBgm(clip);
     }
 
