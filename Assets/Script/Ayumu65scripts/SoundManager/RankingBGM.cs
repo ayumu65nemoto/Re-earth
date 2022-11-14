@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleBGM : MonoBehaviour
+public class RankingBGM : MonoBehaviour
 {
     [SerializeField]
     SoundManager soundManager;
@@ -12,7 +12,7 @@ public class TitleBGM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>(); //SoundManager‚ğQÆ
+        soundManager = GameObject.FindWithTag("SoundManager")?.GetComponent<SoundManager>();
         soundManager.PlayBgm(clip);
     }
 

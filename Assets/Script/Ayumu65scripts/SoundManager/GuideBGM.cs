@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleBGM : MonoBehaviour
+public class GuideBGM : MonoBehaviour
 {
     [SerializeField]
     SoundManager soundManager;

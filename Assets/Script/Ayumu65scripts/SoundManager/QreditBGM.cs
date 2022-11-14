@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleBGM : MonoBehaviour
+public class QreditBGM : MonoBehaviour
 {
     [SerializeField]
     SoundManager soundManager;

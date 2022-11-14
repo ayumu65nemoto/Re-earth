@@ -283,7 +283,6 @@ GameObject:
   - component: {fileID: 281673626}
   - component: {fileID: 281673629}
   - component: {fileID: 281673630}
-  - component: {fileID: 281673631}
   m_Layer: 5
   m_Name: ranking_Button
   m_TagString: Untagged
@@ -434,7 +433,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 281673631}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: SEsoundScript, Assembly-CSharp
           m_MethodName: Event
           m_Mode: 1
@@ -446,18 +445,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &281673631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281673624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49f3cc208506684dbced30fa22dbe78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &342617378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1474,7 @@ GameObject:
   - component: {fileID: 1940935214}
   - component: {fileID: 1940935213}
   - component: {fileID: 1940935212}
+  - component: {fileID: 1940935215}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: SoundManager
@@ -1715,6 +1703,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1940935215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940935210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200eadcc82aa6f34aad6e8705afdd720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeType: 0
 --- !u!1 &1970126112
 GameObject:
   m_ObjectHideFlags: 0
