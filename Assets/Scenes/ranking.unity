@@ -950,8 +950,6 @@ MonoBehaviour:
   Rank5: {fileID: 239412708}
   demo: {fileID: 1118837726}
   RankSc: 0000000000000000000000000000000000000000
-  reset: 0
-  yestrue: 0
   gamen1: {fileID: 376677512}
   gamen2: {fileID: 1005973797}
 --- !u!1 &482322425
@@ -2484,7 +2482,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1813387260}
         m_TargetAssemblyTypeName: RankdeleteScript, Assembly-CSharp
-        m_MethodName: OnClickStartButton
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
