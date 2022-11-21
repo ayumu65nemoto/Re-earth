@@ -6,14 +6,19 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;    //Transform型をいれる
     public float distance = 9.0f;  //float型が入る
-    public float xSpeed = 250.0f;
-    public float ySpeed = 120.0f;
+    //public float xSpeed = 250.0f;
+    //public float ySpeed = 120.0f;
     public float yMinLimit = -45f;
     public float yMaxLimit = 85f;
     private float x = 0.0f;
     private float y = 0.0f;
 
     private Camera cam;
+
+    [SerializeField]
+    CameraManager cameraManager;
+    public float xSense;
+    public float ySense;
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +28,20 @@ public class CameraController : MonoBehaviour
         var angles = transform.eulerAngles;     //このゲームオブジェクト（カメラ）の角度
         x = angles.y;   //「y」の値を取得（代入）
         y = angles.x;
+
+        cameraManager = GameObject.FindWithTag("SoundManager")?.GetComponent<CameraManager>(); //SoundManagerを参照
     }
 
     // Update is called once per frame
     void Update()
     {
+        xSense = cameraManager.xSpeed;
+        ySense = cameraManager.ySpeed;
+
         if (target != null)
         {
-            x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+            x += Input.GetAxis("Mouse X") * xSense * 0.02f;
+            y -= Input.GetAxis("Mouse Y") * ySense * 0.02f;
 
             y = ClampAngle(y, yMinLimit, yMaxLimit);
 
