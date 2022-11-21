@@ -13,12 +13,15 @@ public class BossAppear : MonoBehaviour
     public GameObject appearEffect;
     private float lapsedTime;
     private bool appearFlag;
+    public GameObject arrow;
 
     // Start is called before the first frame update
     void Start()
     {
         //ボスを非アクティブにしておく
         boss.SetActive(false);
+        //矢印を非アクティブにしておく
+        arrow.SetActive(false);
         appearScript = GetComponent<AppearScript>();
         audioSource = GetComponent<AudioSource>();
         appearFlag = false;
@@ -35,6 +38,7 @@ public class BossAppear : MonoBehaviour
             {
                 lapsedTime += Time.deltaTime;
                 GenerateApperEffect();
+                arrow.SetActive(true);
                 if (lapsedTime > 1)
                 {
                     boss.SetActive(true);
