@@ -19,7 +19,7 @@ public class scoresceneScript : MonoBehaviour
         scenetime -= Time.deltaTime;
         if (scenetime <= 0)
         {
-            SceneManager.LoadScene("ranking");
+            SceneManager.LoadScene("Result");
             scenetime = 9.0f;
         }
     }
