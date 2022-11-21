@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/qredit.unity
     guid: 4c3c9c288808a7f46b268b0bcaae7e65
+  - enabled: 1
+    path: Assets/Scenes/ClearMovie.unity
+    guid: 9417130c39b76a24eba13ed37f15a0fd
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 8fe337be9396f83459e8359c38a0c796
   m_configObjects: {}
