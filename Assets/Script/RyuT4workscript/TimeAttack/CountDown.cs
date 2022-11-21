@@ -130,6 +130,8 @@ public class CountDown : MonoBehaviour
 
             facechange = 4;
 
+            SceneManager.LoadScene("ClearMovie");
+
         }
 
         if(CLEAR == 2)
