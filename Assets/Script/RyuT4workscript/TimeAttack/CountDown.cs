@@ -63,7 +63,7 @@ public class CountDown : MonoBehaviour
         Panel1.SetActive(true);
         Panel2.SetActive(false);
         Panel3.SetActive(false);
-        Panel4.SetActive(false);
+        Panel4.SetActive(true);
         Panel5.SetActive(false);
     }
 
