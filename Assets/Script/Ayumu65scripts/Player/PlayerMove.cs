@@ -191,7 +191,7 @@ public class PlayerMove : MonoBehaviour
 				
 				if (powerSkill == true)
                 {
-					if (/*Input.GetKeyDown("joystik button 5") || */Input.GetKeyDown(KeyCode.C))
+					if (Input.GetKeyDown("joystick button 3") || Input.GetKeyDown(KeyCode.C))
                     {
 						if (powerCount > 0)
                         {
