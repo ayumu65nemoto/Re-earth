@@ -8,6 +8,7 @@ public class PlayerStatus : MonoBehaviour
 {
     private float time = 50.00f;  //経過時間
     private float time2 = 5.0f;  //ゲームオーバー時の時間
+    private float changetime = 1.0f;
 
     public int currentHp;
     public int maxHp;
@@ -21,6 +22,7 @@ public class PlayerStatus : MonoBehaviour
     public Text returnText;
 
     public Image HPbardemo1; //追加箇所
+    public int damagekey = 0; //ダメージを受けたとき
 
     // Start is called before the first frame update
     void Start()
@@ -42,9 +44,14 @@ public class PlayerStatus : MonoBehaviour
         //HPテキストの変更
         hpText.text = currentHp.ToString() + " / " + maxHp.ToString(); //ToString = 文字化
 
-        if (currentHp <= 50) ;
+        if(currentHp >= 50)
         {
-            CountDown.facechange = 4;
+            CountDown.facechange = 1;
+        }
+
+        if (currentHp < 50)
+        {
+            CountDown.facechange = 2;
         }
 
         if (currentHp <= 0)
@@ -62,13 +69,28 @@ public class PlayerStatus : MonoBehaviour
                 SceneManager.LoadScene("Title");
             }
         }
+
+        if(damagekey == 1)
+        {
+            changetime -= Time.deltaTime;
+            CountDown.facechange = 5;
+            if (changetime < 0)
+            {
+                CountDown.facechange = 1;
+                damagekey = 0;
+                changetime = 1.0f;
+            }
+        }
     }
 
     //ダメージ
     public void Damage()
     {   //現在値から－10
+
         currentHp -= 3;
         HPbardemo1.fillAmount -= 3 / 100f;
+        damagekey = 1;
+
 
         // 最大値を超えたら最大値を渡す
         currentHp = System.Math.Min(currentHp, MAX);
@@ -81,6 +103,7 @@ public class PlayerStatus : MonoBehaviour
     {
         currentHp -= 7;
         HPbardemo1.fillAmount -= 7 / 100f;
+        damagekey = 1;
 
         // 最大値を超えたら最大値を渡す
         currentHp = System.Math.Min(currentHp, MAX);

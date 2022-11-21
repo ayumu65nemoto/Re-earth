@@ -128,7 +128,7 @@ public class CountDown : MonoBehaviour
             clearText.text = "CLEAR";
             CLEAR = 2;
 
-            facechange = 1;
+            facechange = 4;
 
         }
 

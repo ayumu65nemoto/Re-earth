@@ -28,10 +28,10 @@ public class faceChangeScript : MonoBehaviour
         //ƒNƒŠƒA‚ÌŠç
         if (facekey == 1)
         {
-            face1.SetActive(false);
+            face1.SetActive(true);
             face2.SetActive(false);
             face3.SetActive(false);
-            face4.SetActive(true);
+            face4.SetActive(false);
             face5.SetActive(false);
         }
 
@@ -39,8 +39,8 @@ public class faceChangeScript : MonoBehaviour
         if(facekey == 2)
         {
             face1.SetActive(false);
-            face2.SetActive(false);
-            face3.SetActive(true);
+            face2.SetActive(true);
+            face3.SetActive(false);
             face4.SetActive(false);
             face5.SetActive(false);
         }
@@ -49,18 +49,27 @@ public class faceChangeScript : MonoBehaviour
         {
             face1.SetActive(false);
             face2.SetActive(false);
-            face3.SetActive(false);
+            face3.SetActive(true);
             face4.SetActive(false);
-            face5.SetActive(true);
+            face5.SetActive(false);
         }
 
         if (facekey == 4)
         {
             face1.SetActive(false);
-            face2.SetActive(true);
+            face2.SetActive(false);
+            face3.SetActive(false);
+            face4.SetActive(true);
+            face5.SetActive(false);
+        }
+
+        if(facekey == 5)
+        {
+            face1.SetActive(false);
+            face2.SetActive(false);
             face3.SetActive(false);
             face4.SetActive(false);
-            face5.SetActive(false);
+            face5.SetActive(true);
         }
 
     }
