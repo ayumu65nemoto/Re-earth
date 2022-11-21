@@ -168,7 +168,7 @@ public class PlayerMove : MonoBehaviour
 
                 if (speedSkill == true)
 				{
-					if (/*Input.GetKeyDown("joystick button 4") || */Input.GetKeyDown(KeyCode.E))
+					if (Input.GetKeyDown("joystick button 4") || Input.GetKeyDown(KeyCode.E))
 					{
 						if (speedCount > 0)
 						{
