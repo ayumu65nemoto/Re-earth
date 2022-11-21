@@ -117,7 +117,7 @@ public class CountDown : MonoBehaviour
 
         if (CLEAR == 1)
         {
-            Time.timeScale = 0.001f;
+            //Time.timeScale = 0.001f;
 
             deadcount = EnemyMove.GetdeadEnemy();
             deadcount2 = EnemyMove2.GetdeadEnemy2();
