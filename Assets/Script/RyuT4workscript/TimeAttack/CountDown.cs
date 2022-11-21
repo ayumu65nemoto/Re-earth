@@ -125,7 +125,7 @@ public class CountDown : MonoBehaviour
             score += deadcount * mathscore;
             score += deadcount2 * mathscore;
             score = deadcountBoss * mathscore;
-            clearText.text = "CLEAR";
+            //clearText.text = "CLEAR";
             CLEAR = 2;
 
             facechange = 4;
