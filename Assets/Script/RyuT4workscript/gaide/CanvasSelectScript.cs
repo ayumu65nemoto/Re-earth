@@ -96,10 +96,10 @@ public class CanvasSelectScript : MonoBehaviour
 
         if (changekey == -1)
         {
-            changekey = 22;
+            changekey = 24;
         }
 
-        if (changekey == 23)
+        if (changekey == 25)
         {
             changekey = 0;
         }
@@ -108,7 +108,7 @@ public class CanvasSelectScript : MonoBehaviour
         {
             Panel0.SetActive(true);
             Panel1.SetActive(false);
-            Panel22.SetActive(false);
+            Panel24.SetActive(false);
         }
 
         if (changekey == 1)
@@ -262,13 +262,6 @@ public class CanvasSelectScript : MonoBehaviour
         {
             Panel21.SetActive(false);
             Panel22.SetActive(true);
-            Panel0.SetActive(false);
-        }
-
-        /*if (changekey == 22)
-        {
-            Panel21.SetActive(false);
-            Panel22.SetActive(true);
             Panel23.SetActive(false);
         }
 
@@ -280,6 +273,13 @@ public class CanvasSelectScript : MonoBehaviour
         }
 
         if (changekey == 24)
+        {
+            Panel23.SetActive(false);
+            Panel24.SetActive(true);
+            Panel0.SetActive(false);
+        }
+
+        /*if (changekey == 24)
         {
             Panel23.SetActive(false);
             Panel24.SetActive(true);
